@@ -6,7 +6,7 @@ integral equations of the second kind
 
 .. math:: 
 	
-	X_t = f(t) + \\int_0^t k_1(s,t)X_s ds + \\int_0^t k_2(s,t) X_s dB_s,
+	X_t = f(t) + \int_0^t k_1(s,t)X_s ds + \int_0^t k_2(s,t) X_s dB_s,
 	
 where
 
