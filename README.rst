@@ -1,0 +1,131 @@
+nssvie |pypi| |pyversions| |licence|
+************************************
+
+A python package for computing a numerical solution of stochastic Volterra 
+integral equations of the second kind
+
+.. math:: 
+	
+	X_t = f(t) + \int_0^t k_1(s,t)X_s ds + \int_0^t k_2(s,t) X_s dB_s,
+	
+where
+
++ :math:`X_t` is an unknown process,
++ :math:`f` is a continuous function,
++ :math:`k_1, k_2` are continuous and square integrable functions,
++ :math:`B_t` is the Brownian Motion and
++ :math:`\int_0^t k_2(s,t) X_s dB_s` is the Itô-integral
+
+by a stochastic operational matrix based on block
+pulse functions as suggested in `Maleknejad et. al (2012) 
+<https://www.sciencedirect.com/science/article/pii/S0895717711005504/>`_ [1]_.
+
++ Documentation: https://nssvie.readthedocs.io/en/latest
++ API Reference: https://nssvie.readthedocs.io/en/latest/api.html
++ Source Code: https://github.com/dsagolla/nssvie
++ Bug reports: https://github.com/dsagolla/nssvie/issues
+
+``nssvie`` is distributed under the terms of the `GNU GPLv3 <https://www.gnu.org/licenses/gpl-3.0.en.html>`_ license.
+
+Install
+-------
+
+Install using either of the following two methods.
+
+1. Install from PyPi
+~~~~~~~~~~~~~~~~~~~~
+
+|pypi| |pyversions| |format| 
+
+The ``nssvie`` package is available on `PyPi <https://pypi.org/nssvie>`_ and can be installed using ``pip``
+
+.. code-block:: bash
+
+    pip install nssvie
+
+
+2. Install from Source
+~~~~~~~~~~~~~~~~~~~~~~
+
+|release| |licence|
+
+Install directly from the source code by
+
+.. code-block:: bash
+
+	git clone https://github.com/dsagolla/nssvie.git
+	cd src/nssvie
+	pip install .	
+
+Dependencies
+~~~~~~~~~~~~
+
+``nssvie`` uses 
+
++ `numpy <https://numpy.org/>`_  for many calculations, 
++ `scipy <https://scipy.org>`_ for computing the block pulse coefficients and
++ `stochastic <https://pypi.org/project/stochastic/>`_ for sampling the Brownian Motion
+
+Usage 
+-----
+
+Consider the following example of a stochastic Volterra integral equation
+	
+	.. math::
+	
+		X_t = f(t) + \int_0^t s^2 X_s ds + \int_0^t s X_s dB_s
+		
+for :math:`t \in [0,0.5)`, so :math:`f(t) = 1`, :math:`k_1(s,t) = s^2` and 
+:math:`k_2(s,t) = s`.
+
+	.. code-block:: python
+	
+		>>> from nssvie import StochasticVolterraIntegralEquations
+				
+		>>> # Define the function and the kernels of the stochastic Volterra 
+		>>> # integral equation
+		>>> def f(t):
+		>>> 	return 1.0
+		
+		>>> def k1(s,t):
+		>>> 	return s**2
+		
+		>>> def k2(s,t):
+		>>> 	return s
+		
+		>>> # Generate the stochastic Volterra integral equation
+		>>> svie = StochasticVolterraIntegralEquations(
+		>>> 	func=f, k1=k1, k2=k2, interval_end=0.5
+		>>> )
+		
+		>>> # Calculate numerical solution with m=100 intervals  
+		>>> svie_solution = svie.solve_method(m=100, solve_method="bpf")
+
+
+The parameters are
+
++ ``func``: the function :math:`f`.
++ ``k1``, ``k2``: the kernels :math:`k_1` and :math:`k_2`.
++ ``interval_end``: the right hand side of :math:`[0,T)`. Default is ``1.0``.
++ ``m``: the number of intervals to divide :math:`[0,T)`. Default is ``50``.
++ ``solve_method``: the choosen method based on orthogonal functions. Default is ``bpf``. 
+
+for the stochastic Volterra integral equation above.
+
+Citation
+--------
+
+.. [1] Maleknejad, K., Khodabin, M., & Rostami, M. (2012). Numerical solution of stochastic Volterra integral equations by a stochastic operational matrix based on block pulse functions. Mathematical and computer Modelling, 55(3-4), 791-800. |maleknejad-et-al-2012-doi|    
+
+.. |licence| image:: https://img.shields.io/github/license/dsagolla/nssvie
+    :target: https://www.gnu.org/licenses/gpl-3.0.en.html
+.. |pypi| image:: https://img.shields.io/pypi/v/nssvie
+    :target: https://pypi.org/project/nssvie
+.. |release| image:: https://img.shields.io/github/v/release/dsagolla/nssvie
+    :target: https://github.com/dsagolla/nssvie/releases
+.. |format| image:: https://img.shields.io/pypi/format/nssvie
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/nssvie
+    :target: https://www.python.org/
+.. |maleknejad-et-al-2012-doi| image:: https://img.shields.io/badge/DOI-10.1016%2Fj.mcm.2011.08.053-blue
+    :target: https://doi.org/10.1016/j.mcm.2011.08.053
+    :alt: doi: 10.1016/j.mcm.2011.08.053
