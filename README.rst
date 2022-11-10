@@ -125,24 +125,24 @@ Citation
     :target: https://doi.org/10.1016/j.mcm.2011.08.053
     :alt: doi: 10.1016/j.mcm.2011.08.053
 .. |stochastic-volterra-integral-equation| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/stochastic-volterra-integral-equation.svg
-	:height: 1ex
+	:height: 1em
 .. |X-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/X-t.svg
-	:height: 1ex
+	:height: 1em
 .. |f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/f.svg
-	:height: 1ex
+	:height: 1em
 .. |k-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/k-1-k-2.svg
-	:height: 1ex
+	:height: 1em
 .. |B-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/B-t.svg
-	:height: 1ex
+	:height: 1em
 .. |ito-integral| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/ito-integral.svg
-	:height: 1ex
+	:height: 1em
 .. |example-1-eq| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-eq.svg
-	:height: 1ex
+	:height: 1em
 .. |example-1-f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-f.svg
-	:height: 1ex
+	:height: 1em
 .. |example-1-k-1| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-1.svg
-	:height: 1ex
+	:height: 1em
 .. |example-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-2.svg
-	:height: 1ex
+	:height: 1em
 .. |example-1-interval| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-interval.svg
-	:height: 1ex
+	:height: 1em
