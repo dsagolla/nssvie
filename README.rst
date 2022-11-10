@@ -4,6 +4,13 @@ nssvie |pypi| |pyversions| |licence|
 .. |stochastic-volterra-integral-equation| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/stochastic-volterra-integral-equation.svg
 .. |X-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/X-t.svg
 .. |f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/f.svg
+.. |k-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/k-1-k-2.svg
+.. |B-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/B-t.svg
+.. |ito-integral| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/ito-integral.svg
+.. |example-1-eq| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-eq.svg
+.. |example-1-f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-f.svg
+.. |example-1-k-1| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-1.svg
+.. |example-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-2.svg
 
 A python package for computing a numerical solution of stochastic Volterra 
 integral equations of the second kind
@@ -128,19 +135,3 @@ Citation
 .. |maleknejad-et-al-2012-doi| image:: https://img.shields.io/badge/DOI-10.1016%2Fj.mcm.2011.08.053-blue
     :target: https://doi.org/10.1016/j.mcm.2011.08.053
     :alt: doi: 10.1016/j.mcm.2011.08.053
-.. |k-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/k-1-k-2.svg
-	:height: 1em
-.. |B-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/B-t.svg
-	:height: 1em
-.. |ito-integral| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/ito-integral.svg
-	:height: 1em
-.. |example-1-eq| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-eq.svg
-	:height: 1em
-.. |example-1-f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-f.svg
-	:height: 1em
-.. |example-1-k-1| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-1.svg
-	:height: 1em
-.. |example-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-2.svg
-	:height: 1em
-.. |example-1-interval| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-interval.svg
-	:height: 1em
