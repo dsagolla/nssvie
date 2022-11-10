@@ -125,7 +125,7 @@ Citation
     :target: https://doi.org/10.1016/j.mcm.2011.08.053
     :alt: doi: 10.1016/j.mcm.2011.08.053
 .. |stochastic-volterra-integral-equation| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/stochastic-volterra-integral-equation.svg
-	:height: 12px
+	:height: 20px
 .. |X-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/X-t.svg
 	:height: 1em
 .. |f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/f.svg
