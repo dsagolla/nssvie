@@ -4,17 +4,15 @@ nssvie |pypi| |pyversions| |licence|
 A python package for computing a numerical solution of stochastic Volterra 
 integral equations of the second kind
 
-.. math:: 
-	
-	X_t = f(t) + \int_0^t k_1(s,t)X_s ds + \int_0^t k_2(s,t) X_s dB_s,
-	
-(for :math:`t \in [0,T)`) where
+	|stochastic-volterra-integral-equation|
 
-+ :math:`X_t` is an unknown process,
-+ :math:`f` is a continuous function,
-+ :math:`k_1, k_2` are continuous and square integrable functions,
-+ :math:`B_t` is the Brownian Motion and
-+ :math:`\int_0^t k_2(s,t) X_s dB_s` is the Itô-integral
+where
+
++ |X-t| is an unknown process,
++ |f| is a continuous function,
++ |k-1-k-2| are continuous and square integrable functions,
++ |B-t| is the Brownian Motion and
++ |ito-integral| is the Itô-integral
 
 by a stochastic operational matrix based on block
 pulse functions as suggested in `Maleknejad et. al (2012) 
@@ -71,12 +69,9 @@ Usage
 
 Consider the following example of a stochastic Volterra integral equation
 	
-	.. math::
-	
-		X_t = f(t) + \int_0^t s^2 X_s ds + \int_0^t s X_s dB_s
+	|example-1-eq|,
 		
-for :math:`t \in [0,0.5)`, so :math:`f(t) = 1`, :math:`k_1(s,t) = s^2` and 
-:math:`k_2(s,t) = s`.
+so |example-1-f|, |example-1-k-1| and |example-1-k-2|.
 
 	.. code-block:: python
 	
@@ -129,3 +124,14 @@ Citation
 .. |maleknejad-et-al-2012-doi| image:: https://img.shields.io/badge/DOI-10.1016%2Fj.mcm.2011.08.053-blue
     :target: https://doi.org/10.1016/j.mcm.2011.08.053
     :alt: doi: 10.1016/j.mcm.2011.08.053
+.. |stochastic-volterra-integral-equation| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/stochastic-volterra-integral-equation.svg
+.. |X-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/X-t.svg
+.. |f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/f.svg
+.. |k-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/k-1-k-2.svg
+.. |B-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/B-t.svg
+.. |ito-integral| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/ito-integral.svg
+.. |example-1-eq| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-eq.svg
+.. |example-1-f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-f.svg
+.. |example-1-k-1| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-1.svg
+.. |example-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-2.svg
+.. |example-1-interval| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-interval.svg

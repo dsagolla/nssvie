@@ -20,7 +20,8 @@ from ._version import (
 	package_name,
 	url,
 	version,
-	description
+	description,
+	documentation
 )
 
 __author__ = author
@@ -32,6 +33,7 @@ __package_name__ = package_name
 __url__ = url
 __version__ = version
 __description__ = description
+__documentation_url__ = documentation
 
 __all__ += [
 	__package_name__,
@@ -40,7 +42,8 @@ __all__ += [
 	__url__,
 	__author__,
 	__copyright__,
-	__description__
+	__description__,
+	__documentation_url__
 ]
 
 del author
@@ -52,3 +55,4 @@ del package_name
 del url
 del version
 del description
+del documentation
