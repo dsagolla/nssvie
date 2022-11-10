@@ -8,7 +8,7 @@ integral equations of the second kind
 	
 	X_t = f(t) + \int_0^t k_1(s,t)X_s ds + \int_0^t k_2(s,t) X_s dB_s,
 	
-where
+(for :math:`t \in [0,T)`) where
 
 + :math:`X_t` is an unknown process,
 + :math:`f` is a continuous function,
