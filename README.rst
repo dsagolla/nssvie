@@ -15,7 +15,7 @@ nssvie |pypi| |pyversions| |licence|
 A python package for computing a numerical solution of stochastic Volterra 
 integral equations of the second kind
 
-		|stochastic-volterra-integral-equation|
+	|stochastic-volterra-integral-equation|
 
 where
 
