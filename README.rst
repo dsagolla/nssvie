@@ -133,7 +133,7 @@ Citation
     :target: https://www.gnu.org/licenses/gpl-3.0.en.html
 .. |pypi| image:: https://img.shields.io/pypi/v/nssvie
     :target: https://pypi.org/project/nssvie
-.. |release| image:: https://img.shields.io/github/v/release/dsagolla/nssvie
+.. |release| image:: https://img.shields.io/github/v/release/dsagolla/nssvie?display_name=release&sort=semver
     :target: https://github.com/dsagolla/nssvie/releases
 .. |format| image:: https://img.shields.io/pypi/format/nssvie
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/nssvie
