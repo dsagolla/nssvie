@@ -86,8 +86,8 @@ Consider the following example of a stochastic Volterra integral equation
 		
 so 
 
-+ |example-1-f|
-+ |example-1-k-1|
++ |example-1-f| ,
++ |example-1-k-1| and 
 + |example-1-k-2|.
 
 	.. code-block:: python
