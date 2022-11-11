@@ -2,8 +2,7 @@ from numpy import eye
 
 from numpy.linalg import solve
 
-from .._orthogonal_functions import BlockPulseFunctions
-
+from nssvie._orthogonal_functions import BlockPulseFunctions
 
 class StochasticVolterraIntegralEquation(object):
 	"""

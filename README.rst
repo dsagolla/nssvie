@@ -1,5 +1,7 @@
-nssvie |pypi| |pyversions| |licence|
-************************************
+nssvie 
+******
+
+|pypi| |pyversions| |docs| |licence|
 
 .. |stochastic-volterra-integral-equation| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/stochastic-volterra-integral-equation.svg
 .. |X-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/X-t.svg
@@ -82,7 +84,11 @@ Consider the following example of a stochastic Volterra integral equation
 	
 	|example-1-eq|,
 		
-so |example-1-f|, |example-1-k-1| and |example-1-k-2|.
+so 
+
++ |example-1-f|
++ |example-1-k-1|
++ |example-1-k-2|.
 
 	.. code-block:: python
 	
@@ -135,3 +141,5 @@ Citation
 .. |maleknejad-et-al-2012-doi| image:: https://img.shields.io/badge/DOI-10.1016%2Fj.mcm.2011.08.053-blue
     :target: https://doi.org/10.1016/j.mcm.2011.08.053
     :alt: doi: 10.1016/j.mcm.2011.08.053
+.. |docs| image:: https://readthedocs.org/projects/nssvie/badge/?version=latest
+    :target: https://nssvie.readthedocs.io/en/latest/?badge=latest

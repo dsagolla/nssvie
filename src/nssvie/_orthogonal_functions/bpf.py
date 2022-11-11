@@ -21,7 +21,7 @@ from scipy.integrate import (
 from stochastic.processes import BrownianMotion
 
 
-class BlockPulseFunctions:
+class BlockPulseFunctions(object):
 	"""
 	Generates a ``m``-set of block pulse functions.
 
