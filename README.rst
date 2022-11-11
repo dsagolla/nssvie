@@ -48,7 +48,7 @@ Install using either of the following two methods.
 
 |pypi| |pyversions| |format| 
 
-The ``nssvie`` package is available on `PyPi <https://pypi.org/nssvie>`_ and can be installed using ``pip``
+The ``nssvie`` package is available on `PyPi <https://pypi.org/project/nssvie/>`_ and can be installed using ``pip``
 
 .. code-block:: bash
 
