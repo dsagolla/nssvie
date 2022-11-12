@@ -20,7 +20,6 @@ recursive-exclude docs *.html
 recursive-exclude docs *.pdf
 recursive-include docs/source *.html
 
-recursive-include src *.py
 recursive-include nssvie *.rst
 recursive-include examples *.py
 recursive-include examples *.rst

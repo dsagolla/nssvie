@@ -2,7 +2,7 @@
 Returns
 -------
 _type_
-_description_
+	_description_
 """
 from numpy import eye
 

@@ -11,7 +11,7 @@ from nssvie._integral_equations import StochasticVolterraIntegralEquation
 
 __all__ = ["StochasticVolterraIntegralEquation"]
 
-from ._version import version                               # noqa: E402
+from ._version import version
 
 __version__ = version
 
