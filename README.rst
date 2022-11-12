@@ -17,7 +17,7 @@ nssvie
 A python package for computing a numerical solution of stochastic Volterra 
 integral equations of the second kind
 
-	|stochastic-volterra-integral-equation|
+|stochastic-volterra-integral-equation|
 
 where
 
@@ -86,8 +86,8 @@ Consider the following example of a stochastic Volterra integral equation
 		
 so 
 
-+ |example-1-f| ,
-+ |example-1-k-1| and 
++ |example-1-f| ,   
++ |example-1-k-1| and   
 + |example-1-k-2|.
 
 	.. code-block:: python
