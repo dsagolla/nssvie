@@ -9,9 +9,9 @@ paper. For a detailed theoretical background we refer to this paper.
 """
 from nssvie._integral_equations import StochasticVolterraIntegralEquation
 
-__all__ = ["StochasticVolterraIntegralEquation"]
+__all__ = ["StochasticVolterraIntegralEquation"]            # noqa: F401
 
-from ._version import version
+from nssvie._version import version
 
 __version__ = version
 

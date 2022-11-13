@@ -21,7 +21,7 @@ tracker_url = url + "/issues"
 # Setup
 setuptools.setup(
     name="nssvie",
-    version="0.1.0",
+    version="0.0.1",
     author="Daniel Sagolla",
     author_email="daniel.sagolla@udo.edu",
     description="Numerical solution of stochastic Volterra integral " +
@@ -42,12 +42,10 @@ setuptools.setup(
     },
     platforms=['Linux', 'OSX', 'Windows'],
     packages=setuptools.find_packages(
-        exclude=[
-            'tests.*',
-            'tests',
-            'examples.*',
-            'examples']
+        where='src',
+        exclude=('tests', 'docs')
     ),
+    package_dir={'': 'src'},
     install_requires=requirements,
     python_requires='>=3.9',
     setup_requires=[
