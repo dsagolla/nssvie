@@ -24,9 +24,9 @@ setuptools.setup(
     version="0.0.1",
     author="Daniel Sagolla",
     author_email="daniel.sagolla@udo.edu",
-    description="Numerical solution of stochastic Volterra integral " +
-                "equations via a stochastic operational matrix based " +
-                "on block pulse functions.",
+    description=r"Numerical solution of stochastic Volterra integral " +
+                r"equations via a stochastic operational matrix based " +
+                r"on block pulse functions.",
     long_description=long_description,
     long_description_content_type='text/x-rst',
     keywords='orthogonal-functions sde ' +
@@ -47,7 +47,7 @@ setuptools.setup(
     ),
     package_dir={'': 'src'},
     install_requires=requirements,
-    python_requires='>=3.9',
+    python_requires='>=3.6',
     setup_requires=[
         'setuptools',
         'pytest-runner'],
@@ -61,7 +61,11 @@ setuptools.setup(
         'docs': docs_requirements,
     },
     classifiers=[
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Operating System :: OS Independent',
         'Natural Language :: English',

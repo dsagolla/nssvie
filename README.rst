@@ -65,7 +65,7 @@ Install directly from the source code by
 .. code-block:: bash
 
 	git clone https://github.com/dsagolla/nssvie.git
-	cd src/nssvie
+	cd nssvie
 	pip install .	
 
 Dependencies

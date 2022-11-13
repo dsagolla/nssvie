@@ -3,7 +3,7 @@
     {% if pagename.startswith("reference") %}
     {{ generate_toctree_html("sidebar", maxdepth=1, collapse=True, includehidden=True, titles_only=True) }}
     {% else %}
-    {{ generate_toctree_html("sidebar", maxdepth=2, collapse=True, includehidden=True, titles_only=True) }}
+    {{ generate_toctree_html("sidebar", maxdepth=3, collapse=True, includehidden=True, titles_only=True) }}
     {% endif %}
   </div>
 </nav>

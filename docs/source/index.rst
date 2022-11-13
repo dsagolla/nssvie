@@ -1,55 +1,41 @@
 |project| documentation
 ***********************
 
-|license| |deploy-docs|
+|pypi| |pyversions| |docs| |licence|
 
 .. toctree::
-    :maxdepth: 1
-    :caption: Documentation
-    :hidden:
+   :maxdepth: 1
+   :caption: Documentation
+   :hidden:
 
-    Home <self>
-    API Reference <api>
-
-
-.. |image01| replace:: $\phi_i^{\perp}$
-.. |image02| replace:: $\phi_i$
-.. |image03| replace:: $t \in [0,L]$
-.. |image04| replace:: $w(t) = t^{-1}$
-.. |image05| replace:: $\delta_{ij}$
-.. |image06| replace:: $i_0$
-.. |image07| replace:: $n$
-.. |image08| replace:: $L$
-.. |image09| replace:: $\alpha_i$
-.. |image10| replace:: $a_{ij}$
-.. |image11| replace:: $$\phi_i(t) = t^{\frac{1}{i+1}}, \qquad i = i_0,\dots,i_0+n.$$
-.. |image12| replace:: $$\phi_i^{\perp}(t) = \alpha_i \sum_{j = i_0}^{i_0+n} a_{ij} \phi_j(t), \qquad i = i_0,\dots,i_0+n.$$
-.. |image13| replace:: $$\langle \phi_i^{\perp},\phi_j^{\perp} \rangle_{L^2([0,L],\mathrm{d}t/t)} = \int_0^L \phi_i^{\perp}(t) \phi_j^{\perp}(t) \frac{\mathrm{d}t}{t} = \delta_{ij},$$
+   Home <self>
+   Theory <theory>
+   API Reference <api>
 
 .. .. include:: ../../README.rst
 ..    :start-after: .. include_after_this_line
 
 A python package for computing a numerical solution of stochastic Volterra 
 integral equations by a stochastic operational matrix based on block
-pulse functions as suggested in `Maleknejad et. al (2012)` [1]_.
+pulse functions as suggested in ``Maleknejad et. al (2012)`` [1]_.
 
 .. grid:: 3
 
-    .. grid-item-card:: GitHub
-        :link: https://github.com/dsagolla/nssvie
-        :text-align: center
-        :class-card: custom-card-link
+   .. grid-item-card:: GitHub
+      :link: https://github.com/dsagolla/nssvie
+      :text-align: center
+      :class-card: custom-card-link
 
-    .. grid-item-card:: PyPI
-        :link: https://pypi.org/project/nssvie/
-        :text-align: center
-        :class-card: custom-card-link
+   .. grid-item-card:: PyPI
+      :link: https://pypi.org/project/nssvie/
+      :text-align: center
+      :class-card: custom-card-link
 
-    .. grid-item-card:: API reference
-        :link: api
-        :link-type: ref
-        :text-align: center
-        :class-card: custom-card-link
+   .. grid-item-card:: API reference
+      :link: api
+      :link-type: ref
+      :text-align: center
+      :class-card: custom-card-link
 
 Overview
 ========
@@ -57,7 +43,7 @@ Overview
 Build and Test Status
 =====================
 
-|codecov-devel| 
+
 
 .. |y| unicode:: U+2714
 .. |n| unicode:: U+2716
@@ -84,40 +70,32 @@ Build and Test Status
 Install
 =======
 
-Install using either of the following three methods.
+Install using either of the following two methods.
 
 1. Install from PyPi
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
-|pypi|
+|pypi| |pyversions| |format| 
 
-Install using the package available on `PyPi <https://pypi.org/project/ortho>`__ by
+The ``nssvie`` package is available on `PyPi <https://pypi.org/project/nssvie/>`_ and can be installed using ``pip``
 
-.. prompt:: bash
+.. code-block:: bash
 
-  pip install ortho
+   $ pip install nssvie
 
-2. Install from Anaconda Cloud
-------------------------------
 
-Install using `Anaconda cloud <https://anaconda.org/s-ameli/traceinv>`_ by
+2. Install from Source
+~~~~~~~~~~~~~~~~~~~~~~
 
-.. prompt:: bash
-
-    conda install -c s-ameli ortho
-
-3. Install from Source Code
----------------------------
-
-|release|
+|release| |licence|
 
 Install directly from the source code by
 
-.. prompt:: bash
+.. code-block:: bash
 
-  git clone https://github.com/ameli/ortho.git
-  cd ortho
-  pip install .
+	$ git clone https://github.com/dsagolla/nssvie.git
+	$ cd nssvie
+	$ pip install .
 
 Testing
 =======
@@ -147,7 +125,7 @@ The package can be used in two ways:
 
 .. code-block:: python
 
-    >>> from ortho import OrthogonalFunctions
+    >>> from nssvie import StochasticVolterraIntegralEquation
     
     >>> # Generate object of orthogonal functions
     >>> OF = OrthogonalFunctions(
@@ -178,9 +156,9 @@ The package can be used in two ways:
 
 The parameters are:
 
-- ``start_index``: the index of the starting function, |image06|. Default is ``1``.
-- ``num_func``: number of orthogonal functions to generate, |image07|. Default is ``9``.
-- ``end_interval``: the right interval of orthogonality, |image08|. Default is ``1``.
+- ``start_index``: the index of the starting function, . Default is ``1``.
+- ``num_func``: number of orthogonal functions to generate, . Default is ``9``.
+- ``end_interval``: the right interval of orthogonality, . Default is ``1``.
 
 2. Use As Standalone Application
 --------------------------------
@@ -236,134 +214,16 @@ When the *standalone application* (the second method in the above) is called, th
 Parameters
 ----------
 
-The variables |image06|, |image07|, and |image08| can be set in the script by the following arguments,
-
-+-------------+----------------------+---------------------------------+
-| Variable    | Variable in script   | Option                          |
-+=============+======================+=================================+
-| |image06|   | ``start_index``      | ``-s``, or ``--start-func``     |
-+-------------+----------------------+---------------------------------+
-| |image07|   | ``num_func``         | ``-n``, or ``--num-func``       |
-+-------------+----------------------+---------------------------------+
-| |image08|   | ``end_interval``     | ``-e``, or ``--end-interval``   |
-+-------------+----------------------+---------------------------------+
-
-Examples
---------
-
-#. Generate nine orthogonal functions from index 1 to 9 (defaults)
-
-   .. prompt:: bash
-
-        ortho
-
-#. Generate eight orthogonal functions from index 1 to 8
-
-   .. prompt:: bash
-
-        ortho -n 8
-
-#. Generate nine orthogonal functions from index 0 to 8
-
-   .. prompt:: bash
-
-        ortho -s 0
-
-#. Generate nine orthogonal functions that are orthonormal in the interval [0,10]
-
-   .. prompt:: bash
-
-        ortho -e 10
-
-#. Check orthogonality of each two functions, plot the orthonormal functions and save the plot to pdf
-
-   .. prompt:: bash
-
-        ortho -c -p
-
-#. A complete example:
-
-   .. prompt:: bash
-
-        ortho -n 9 -s 1 -e 1 -c -p
-
-Output
-------
-
--  Displays the orthogonal functions as computer algebraic symbolic functions. An example a set of generated functions is shown below.
-
-::
-
-    phi_1(t) =  sqrt(x)
-    phi_2(t) =  sqrt(6)*(5*x**(1/3) - 6*sqrt(x))/3
-    phi_3(t) =  sqrt(2)*(21*x**(1/4) - 40*x**(1/3) + 20*sqrt(x))/2
-    phi_4(t) =  sqrt(10)*(84*x**(1/5) - 210*x**(1/4) + 175*x**(1/3) - 50*sqrt(x))/5
-    phi_5(t) =  sqrt(3)*(330*x**(1/6) - 1008*x**(1/5) + 1134*x**(1/4) - 560*x**(1/3) + 105*sqrt(x))/3
-    phi_6(t) =  sqrt(14)*(1287*x**(1/7) - 4620*x**(1/6) + 6468*x**(1/5) - 4410*x**(1/4) + 1470*x**(1/3) - 196*sqrt(x))/7
-    phi_7(t) =  5005*x**(1/8)/2 - 10296*x**(1/7) + 17160*x**(1/6) - 14784*x**(1/5) + 6930*x**(1/4) - 1680*x**(1/3) + 168*sqrt(x)
-    phi_8(t) =  sqrt(2)*(19448*x**(1/9) - 90090*x**(1/8) + 173745*x**(1/7) - 180180*x**(1/6) + 108108*x**(1/5) - 37422*x**(1/4) + 6930*x**(1/3) - 540*sqrt(x))/3
-    phi_9(t) =  sqrt(5)*(75582*x**(1/10) - 388960*x**(1/9) + 850850*x**(1/8) - 1029600*x**(1/7) + 750750*x**(1/6) - 336336*x**(1/5) + 90090*x**(1/4) - 13200*x**(1/3) + 825*sqrt(x))/5
-
--  Displays readable coefficients, |image09| and |image10| of the functions. For instance,
-
-::
-
-      i      alpha_i                                    a_[ij]
-    ------  ----------   -----------------------------------------------------------------------
-    i = 1:  +sqrt(2/2)   [1                                                                    ]
-    i = 2:  -sqrt(2/3)   [6,   -5                                                              ]
-    i = 3:  +sqrt(2/4)   [20,  -40,    21                                                      ]
-    i = 4:  -sqrt(2/5)   [50,  -175,   210,   -84                                              ]
-    i = 5:  +sqrt(2/6)   [105, -560,   1134,  -1008,   330                                     ]
-    i = 6:  -sqrt(2/7)   [196, -1470,  4410,  -6468,   4620,   -1287                           ]
-    i = 7:  +sqrt(2/8)   [336, -3360,  13860, -29568,  34320,  -20592,   5005                  ]
-    i = 8:  -sqrt(2/9)   [540, -6930,  37422, -108108, 180180, -173745,  90090,  -19448        ]
-    i = 9:  +sqrt(2/10)  [825, -13200, 90090, -336336, 750750, -1029600, 850850, -388960, 75582]
-
--  Displays the matrix of the mutual inner product of functions to check orthogonality (using option ``-c``). An example of the generated matrix of the mutual inner product of functions is shown below.
-
-::
-
-    [[1 0 0 0 0 0 0 0 0]
-     [0 1 0 0 0 0 0 0 0]
-     [0 0 1 0 0 0 0 0 0]
-     [0 0 0 1 0 0 0 0 0]
-     [0 0 0 0 1 0 0 0 0]
-     [0 0 0 0 0 1 0 0 0]
-     [0 0 0 0 0 0 1 0 0]
-     [0 0 0 0 0 0 0 1 0]
-     [0 0 0 0 0 0 0 0 1]]
-
--  Plots the set of functions (using option ``-p``) and saves the plot in the current directory. An example of a generated plot is shown below.
-
-.. image:: https://raw.githubusercontent.com/ameli/ortho/main/docs/source/images/orthogonal_functions.svg
-    :align: center
-
 .. include:: cite.rst
 
-.. |deploy-docs| image:: https://img.shields.io/github/workflow/status/ameli/ortho/deploy-docs?label=docs
-   :target: https://github.com/ameli/ortho/actions?query=workflow%3Adeploy-docs
-.. |codecov-devel| image:: https://img.shields.io/codecov/c/github/ameli/ortho
-   :target: https://codecov.io/gh/ameli/ortho
-.. |license| image:: https://img.shields.io/github/license/ameli/ortho
-   :target: https://opensource.org/licenses/BSD-3-Clause
-.. |travis-devel-linux| image:: https://img.shields.io/travis/com/ameli/ortho?env=BADGE=linux&label=build&branch=main
-   :target: https://travis-ci.com/github/ameli/ortho
-.. |travis-devel-osx| image:: https://img.shields.io/travis/com/ameli/ortho?env=BADGE=osx&label=build&branch=main
-   :target: https://travis-ci.com/github/ameli/ortho
-.. |travis-devel-windows| image:: https://img.shields.io/travis/com/ameli/ortho?env=BADGE=windows&label=build&branch=main
-   :target: https://travis-ci.com/github/ameli/ortho
-.. |implementation| image:: https://img.shields.io/pypi/implementation/ortho
-.. |pyversions| image:: https://img.shields.io/pypi/pyversions/ortho
-.. |format| image:: https://img.shields.io/pypi/format/ortho
-.. |pypi| image:: https://img.shields.io/pypi/v/ortho
-.. |conda| image:: https://anaconda.org/s-ameli/ortho/badges/installer/conda.svg
-   :target: https://anaconda.org/s-ameli/ortho
-.. |platforms| image:: https://img.shields.io/conda/pn/s-ameli/ortho?color=orange?label=platforms
-   :target: https://anaconda.org/s-ameli/ortho
-.. |conda-version| image:: https://img.shields.io/conda/v/s-ameli/ortho
-   :target: https://anaconda.org/s-ameli/ortho
-.. |release| image:: https://img.shields.io/github/v/tag/ameli/ortho
-   :target: https://github.com/ameli/ortho/releases/
-.. |conda-platform| image:: https://anaconda.org/s-ameli/ortho/badges/platforms.svg
-   :target: https://anaconda.org/s-ameli/ortho
+.. |licence| image:: https://img.shields.io/github/license/dsagolla/nssvie
+   :target: https://www.gnu.org/licenses/gpl-3.0.en.html
+.. |pypi| image:: https://img.shields.io/pypi/v/nssvie
+   :target: https://pypi.org/project/nssvie
+.. |release| image:: https://img.shields.io/github/v/release/dsagolla/nssvie?display_name=release&sort=semver
+   :target: https://github.com/dsagolla/nssvie/releases
+.. |format| image:: https://img.shields.io/pypi/format/nssvie
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/nssvie
+   :target: https://www.python.org/
+.. |docs| image:: https://readthedocs.org/projects/nssvie/badge/?version=latest
+   :target: https://nssvie.readthedocs.io/en/latest/?badge=latest
