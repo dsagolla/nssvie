@@ -3,23 +3,33 @@
 
 |pypi| |pyversions| |docs| |licence|
 
+.. |stochastic-volterra-integral-equation| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/stochastic-volterra-integral-equation.svg
+.. |X-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/X-t.svg
+.. |f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/f.svg
+.. |k-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/k-1-k-2.svg
+.. |B-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/B-t.svg
+.. |ito-integral| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/ito-integral.svg
+.. |example-1-eq| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-eq.svg
+.. |example-1-f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-f.svg
+.. |example-1-k-1| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-1.svg
+.. |example-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-2.svg
+
 .. toctree::
    :maxdepth: 1
    :caption: Documentation
    :hidden:
 
    Home <self>
-   Theory <theory>
+   Theory <theory/index>
    API Reference <api>
 
 .. .. include:: ../../README.rst
 ..    :start-after: .. include_after_this_line
 
 A python package for computing a numerical solution of stochastic Volterra 
-integral equations by a stochastic operational matrix based on block
-pulse functions as suggested in ``Maleknejad et. al (2012)`` [1]_.
+integral equations.
 
-.. grid:: 3
+.. grid:: 4
 
    .. grid-item-card:: GitHub
       :link: https://github.com/dsagolla/nssvie
@@ -28,6 +38,11 @@ pulse functions as suggested in ``Maleknejad et. al (2012)`` [1]_.
 
    .. grid-item-card:: PyPI
       :link: https://pypi.org/project/nssvie/
+      :text-align: center
+      :class-card: custom-card-link
+
+   .. grid-item-card:: Theory
+      :link: theory/index.html
       :text-align: center
       :class-card: custom-card-link
 
@@ -40,32 +55,21 @@ pulse functions as suggested in ``Maleknejad et. al (2012)`` [1]_.
 Overview
 ========
 
-Build and Test Status
-=====================
+|project| is a python package for computing a numerical solution of stochastic Volterra 
+integral equations of the second kind
 
+|stochastic-volterra-integral-equation|
 
+where
 
-.. |y| unicode:: U+2714
-.. |n| unicode:: U+2716
++ |X-t| is an unknown process,
++ |f| is a continuous function,
++ |k-1-k-2| are continuous and square integrable functions,
++ |B-t| is the Brownian Motion and
++ |ito-integral| is the Itô-integral
 
-+----------+--------+-------+-------+-------+-------+-------+-----------------+
-| Platform | Arch   | Python Version                        | Continuous      |
-+          |        +-------+-------+-------+-------+-------+ Integration     +
-|          |        |  3.6  |  3.7  |  3.8  |  3.9  |  3.10 |                 |
-+==========+========+=======+=======+=======+=======+=======+=================+
-| Linux    | X86-64 |  |y|  |  |y|  |  |y|  |  |y|  |  |y|  | |build-linux|   |
-+----------+--------+-------+-------+-------+-------+-------+-----------------+
-| macOS    | X86-64 |  |y|  |  |y|  |  |y|  |  |y|  |  |y|  | |build-macos|   |
-+----------+--------+-------+-------+-------+-------+-------+-----------------+
-| Windows  | X86-64 |  |y|  |  |y|  |  |y|  |  |y|  |  |y|  | |build-windows| |
-+----------+--------+-------+-------+-------+-------+-------+-----------------+
-
-.. |build-linux| image:: https://img.shields.io/github/workflow/status/ameli/imate/build-linux
-   :target: https://github.com/ameli/imate/actions?query=workflow%3Abuild-linux 
-.. |build-macos| image:: https://img.shields.io/github/workflow/status/ameli/imate/build-macos
-   :target: https://github.com/ameli/imate/actions?query=workflow%3Abuild-macos
-.. |build-windows| image:: https://img.shields.io/github/workflow/status/ameli/imate/build-windows
-   :target: https://github.com/ameli/imate/actions?query=workflow%3Abuild-windows
+by a stochastic operational matrix based on block
+pulse functions as suggested in ``Maleknejad et. al (2012)`` [1]_.
 
 Install
 =======
@@ -77,12 +81,11 @@ Install using either of the following two methods.
 
 |pypi| |pyversions| |format| 
 
-The ``nssvie`` package is available on `PyPi <https://pypi.org/project/nssvie/>`_ and can be installed using ``pip``
+The ``nssvie`` package is available on `PyPi <https://pypi.org/project/nssvie/>`__ and can be installed using ``pip``
 
 .. code-block:: bash
 
    $ pip install nssvie
-
 
 2. Install from Source
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -97,122 +100,41 @@ Install directly from the source code by
 	$ cd nssvie
 	$ pip install .
 
-Testing
-=======
-
-To test the package, download the source code and use one of the following methods in the directory of the source code:
-
-- *Method 1*: test locally by:
-
-  .. prompt:: bash
-      
-      python setup.py test
-
-- *Method 2*: test in a virtual environment using ``tox``:
-
-  .. prompt:: bash
-
-      pip install tox
-      tox
-
 Usage
 =====
 
-The package can be used in two ways:
-
-1. Import as a Module
----------------------
-
 .. code-block:: python
+	
+		>>> from nssvie import StochasticVolterraIntegralEquations
+				
+		>>> # Define the function and the kernels of the stochastic Volterra 
+		>>> # integral equation
+		>>> def f(t):
+		>>> 	return 1.0
+		
+		>>> def k1(s,t):
+		>>> 	return s**2
+		
+		>>> def k2(s,t):
+		>>> 	return s
+		
+		>>> # Generate the stochastic Volterra integral equation
+		>>> svie = StochasticVolterraIntegralEquations(
+		>>> 	func=f, k1=k1, k2=k2, interval_end=0.5
+		>>> )
+		
+		>>> # Calculate numerical solution with prec=100 intervals  
+		>>> svie_solution = svie.solve_method(prec=100, solve_method="bpf")
 
-    >>> from nssvie import StochasticVolterraIntegralEquation
-    
-    >>> # Generate object of orthogonal functions
-    >>> OF = OrthogonalFunctions(
-    ...        start_index=1,
-    ...        num_func=9,
-    ...        end_interval=1,
-    ...        verbose=True)
-    
-    >>> # Get numeric coefficients alpha[i] and a[i][j]
-    >>> alpha = OF.alpha
-    >>> a = OF.coeffs
+The parameters are
 
-    >>> # Get symbolic coefficients alpha[i] and a[i][j]
-    >>> sym_alpha = OF.sym_alpha
-    >>> sym_a = OF.sym_coeffs
++ ``func``: the function :math:`f`.
++ ``k1``, ``k2``: the kernels :math:`k_1` and :math:`k_2`.
++ ``interval_end``: the right hand side of :math:`[0,T)`. Default is ``1.0``.
++ ``prec``: the number of intervals to divide :math:`[0,T)`. Default is ``50``.
++ ``solve_method``: the choosen method based on orthogonal functions. Default is ``bpf``. 
 
-    >>> # Get symbolic functions phi[i]
-    >>> sym_phi = OF.sym_phi
-    
-    >>> # Print Functions
-    >>> OF.print()
-    
-    >>> # Check mutual orthogonality of Functions
-    >>> status = OF.check(verbose=True)
-    
-    >>> # Plot Functions
-    >>> OF.plot()
-
-The parameters are:
-
-- ``start_index``: the index of the starting function, . Default is ``1``.
-- ``num_func``: number of orthogonal functions to generate, . Default is ``9``.
-- ``end_interval``: the right interval of orthogonality, . Default is ``1``.
-
-2. Use As Standalone Application
---------------------------------
-
-The standalone application can be executed in the terminal in two ways:
-
-#. If you have installed the package, call ``ortho`` executable in terminal:
-
-   .. prompt:: bash
-
-       ortho [options]
-
-   The optional argument ``[options]`` will be explained in the next section. When the package *ortho* is installed, the executable ``ortho`` is located in the ``/bin`` directory of the python.
-
-#. Without installing the package, the main script of the package can be executed directly from the source code by
-
-   .. prompt:: bash
-
-       # Download the package
-       git clone https://github.com/ameli/ortho.git
-
-       # Go to the package source directory
-       cd ortho
-
-       # Execute the main script of the package
-       python -m ortho [options]
-
-Optional arguments
-------------------
-
-When the *standalone application* (the second method in the above) is called, the executable accepts some optional arguments as follows.
-
-+--------------------------------------+------------------------------------------------------------------------------------------+
-| Option                               | Description                                                                              |
-+======================================+==========================================================================================+
-| ``-h``, ``--help``                   | Prints a help message.                                                                   |
-+--------------------------------------+------------------------------------------------------------------------------------------+
-| ``-v``, ``--version``                | Prints version.                                                                          |
-+--------------------------------------+------------------------------------------------------------------------------------------+
-| ``-l``, ``--license``                | Prints author info, citation and license.                                                |
-+--------------------------------------+------------------------------------------------------------------------------------------+
-| ``-n``, ``--num-func[=int]``         | Number of orthogonal functions to generate. Positive integer. Default is 9.              |
-+--------------------------------------+------------------------------------------------------------------------------------------+
-| ``-s``, ``--start-func[=int]``       | Starting function index. Non-negative integer. Default is 1.                             |
-+--------------------------------------+------------------------------------------------------------------------------------------+
-| ``-e``, ``--end-interval[=float]``   | End of the interval of functions domains. A real number greater than zero. Default is 1. |
-+--------------------------------------+------------------------------------------------------------------------------------------+
-| ``-c``,\ ``--check``                 | Checks orthogonality of generated functions.                                             |
-+--------------------------------------+------------------------------------------------------------------------------------------+
-| ``-p``, ``--plot``                   | Plots generated functions, also saves the plot as pdf file in the current directory.     |
-+--------------------------------------+------------------------------------------------------------------------------------------+
-
-Parameters
-----------
+for the stochastic Volterra integral equation above.
 
 .. include:: cite.rst
 

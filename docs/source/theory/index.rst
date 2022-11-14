@@ -1,9 +1,5 @@
-.. _theory:
-
 Theory
 ******
-
-[1]_
 
 Introduction
 ============
@@ -19,6 +15,3 @@ Testing
 
 Usage
 =====
-
-.. include:: theory_cite.rst
-

@@ -2,21 +2,9 @@
 
 Submodule containing the class BlockPulseFunctions.
 """
-from numpy import (
-    array,
-    eye,
-    triu,
-    ones,
-    full,
-    transpose,
-    diagflat,
-    multiply
-)
+from numpy import array, eye, triu, ones, full, transpose, diagflat, multiply
 
-from scipy.integrate import (
-    quad,
-    dblquad
-)
+from scipy.integrate import quad, dblquad
 
 from stochastic.processes import BrownianMotion
 
@@ -39,6 +27,7 @@ class BlockPulseFunctions:
         bandwidth : float, default=1/50
             The width of one of the ``m`` intervals.
     """
+
     # ----
     # Init
     # ----
@@ -48,17 +37,20 @@ class BlockPulseFunctions:
         self.bandwidth = float(interval_end / refineness)
 
     def __str__(self):
-        str_name = f'{self.refineness}-Set of block pulse functions on ' \
-            'the interval [0, {self.bandwidth})'
+        str_name = (
+            f"{self.refineness}-Set of block pulse functions on "
+            "the interval [0, {self.bandwidth})"
+        )
         return str_name
 
     def __repr__(self):
-        repr_string = f'BlockPulseFunctions(m={self.refineness}, ' \
-            f'[0, {self.bandwidth}))'
+        repr_string = (
+            f"BlockPulseFunctions(m={self.refineness}, " f"[0, {self.bandwidth}))"
+        )
         return repr_string
 
     def _bpf_i(self, i, t_value) -> float:
-        """ Calculate block pulse function at given value.
+        """Calculate block pulse function at given value.
         phi_i(t) = 1 if and only if (i-1)*h <= t < i*h
         phi_i(t) = 0 otherwise
 
@@ -97,7 +89,7 @@ class BlockPulseFunctions:
         return [self._bpf_i(i, t_value) for i in range(1, self.refineness + 1)]
 
     def _coeff_i(self, i, func) -> float:
-        """ Using :external:func:`scipy.integrate.quad`.
+        """Using :external:func:`scipy.integrate.quad`.
 
         Parameters:
         -----------
@@ -112,11 +104,7 @@ class BlockPulseFunctions:
         """
         return float(
             (1 / self.bandwidth)
-            * quad(
-                func,
-                (i - 1) * self.bandwidth,
-                i * self.bandwidth
-            )[0]
+            * quad(func, (i - 1) * self.bandwidth, i * self.bandwidth)[0]
         )
 
     def _coefficient_vector(self, func) -> array:
@@ -132,11 +120,8 @@ class BlockPulseFunctions:
             ``func``.
         """
         return array(
-            [
-                self._coeff_i(i, func)
-                for i in range(1, self.refineness + 1)
-            ]
-        ).T
+            [self._coeff_i(i, func) for i in range(1, self.refineness + 1)]
+            ).T
 
     def _coeff_ij(self, i, j, func) -> float:
         """
@@ -158,7 +143,8 @@ class BlockPulseFunctions:
             (i - 1) * self.bandwidth,
             i * self.bandwidth,
             (j - 1) * self.bandwidth,
-            j * self.bandwidth)[0]
+            j * self.bandwidth,
+        )[0]
 
     def _coefficient_matrix(self, func) -> array:
         """
@@ -177,12 +163,15 @@ class BlockPulseFunctions:
         def func_var_switched(second_var, first_var):
             return func(first_var, second_var)
 
-        coeff_matrix = array([
+        coeff_matrix = array(
             [
-                self._coeff_ij(i, j, func_var_switched)
-                for j in range(1, self.refineness + 1)
-            ] for i in range(1, self.refineness + 1)
-        ])
+                [
+                    self._coeff_ij(i, j, func_var_switched)
+                    for j in range(1, self.refineness + 1)
+                ]
+                for i in range(1, self.refineness + 1)
+            ]
+        )
         return self.bandwidth ** (-2) * coeff_matrix
 
     def _operational_matrix_of_integration(self) -> array:
@@ -198,7 +187,7 @@ class BlockPulseFunctions:
         # Contruct the upper triangular part
         upper_triu = triu(2 * ones((self.refineness, self.refineness)), k=1)
 
-        return self.bandwidth / 2 * (diagonal + upper_triu)
+        return self.bandwidth * 0.5 * (diagonal + upper_triu)
 
     def _stochastic_operational_matrix_of_integration(self) -> array:
         """
@@ -216,14 +205,12 @@ class BlockPulseFunctions:
 
         # Construct the upper triangulart part
         const_column = [
-            brownian_motion_sample[2 * i]
-            - brownian_motion_sample[2 * (i - 1)]
-            for i in range(1, self.refineness + 1)]
+            brownian_motion_sample[2 * i] - brownian_motion_sample[2 * (i - 1)]
+            for i in range(1, self.refineness + 1)
+        ]
         triu_matrix = full(
-            (self.refineness, self.refineness),
-            transpose(
-                [const_column]
-            ))
+            (self.refineness, self.refineness), transpose([const_column])
+        )
 
         # Construct the diagonal part
         diagonal = [
@@ -247,7 +234,8 @@ class BlockPulseFunctions:
         """
         return multiply(
             self._operational_matrix_of_integration(),
-            self._coefficient_matrix(kernel_1))
+            self._coefficient_matrix(kernel_1),
+        )
 
     def _matrix_b2(self, kernel_2) -> array:
         """
@@ -262,4 +250,5 @@ class BlockPulseFunctions:
         """
         return multiply(
             self._stochastic_operational_matrix_of_integration(),
-            self._coefficient_matrix(kernel_2))
+            self._coefficient_matrix(kernel_2),
+        )

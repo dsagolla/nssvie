@@ -10,7 +10,7 @@ Classes
 
 .. autosummary::
     :toctree: generated
-    :caption: Functions
+    :caption: Integral equations
     :recursive:
     :template: autosummary/class.rst
     

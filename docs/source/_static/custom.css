@@ -1,0 +1,54 @@
+:root {
+    --sd-color-primary: #579aca;
+    --sd-color-secondary: #f5a252;    
+}
+
+/* Header */
+
+.support-button {
+    background-color: #e66783;
+}
+
+.support-button:hover {
+    background-color: #b9556b;
+}
+
+.support-button i {
+    padding-right: .5em;
+}
+
+/* Text elements */
+
+div.body p.caption {
+    font-size: 1.2em;
+}
+
+div.sphinxsidebarwrapper p.caption {
+    font-size: 1.4em;
+}
+
+div.sphinxsidebarwrapper ul {
+    font-size: .8em;
+    padding-left: 1em;
+}
+
+
+/* Federation grid */
+.federation-members .card-header a.btn {
+    font-size: 1.4rem !important;
+}
+
+/* Badges on front page */
+div.badges img {
+    float: left;
+    margin-right: .5em;
+}
+
+/* Logo */
+img.logo__image {
+    padding: 0.25rem;
+}
+
+p.logo__title {
+    font-size: 1.25em;
+}
