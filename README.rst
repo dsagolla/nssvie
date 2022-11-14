@@ -81,9 +81,9 @@ Usage
 -----
 
 Consider the following example of a stochastic Volterra integral equation
-	
-	|example-1-eq|,
-		
+
+|example-1-eq|
+
 so 
 
 + |example-1-f| ,   
