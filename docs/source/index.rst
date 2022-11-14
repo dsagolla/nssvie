@@ -136,8 +136,14 @@ The parameters are
 
 for the stochastic Volterra integral equation above.
 
-.. include:: cite.rst
+Citation
+========
 
+.. [1] Maleknejad, K., Khodabin, M., & Rostami, M. (2012). Numerical solution of stochastic Volterra integral equations by a stochastic operational matrix based on block pulse functions. Mathematical and computer Modelling, 55(3-4), 791-800. |maleknejad-et-al-2012-doi|
+
+.. |maleknejad-et-al-2012-doi| image:: https://img.shields.io/badge/DOI-10.1016%2Fj.mcm.2011.08.053-blue
+      :target: https://doi.org/10.1016/j.mcm.2011.08.053
+      :alt: doi: 10.1016/j.mcm.2011.08.053
 .. |licence| image:: https://img.shields.io/github/license/dsagolla/nssvie
    :target: https://www.gnu.org/licenses/gpl-3.0.en.html
 .. |pypi| image:: https://img.shields.io/pypi/v/nssvie

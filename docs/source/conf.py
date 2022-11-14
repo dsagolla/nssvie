@@ -10,9 +10,10 @@ extensions = [
     "sphinx_copybutton",
     "sphinx_design",
     "sphinx.ext.intersphinx",
+    "custom_domain",
     # 'sphinx.ext.autodoc',
     # 'sphinx_math_dollar',
-    # 'sphinx.ext.mathjax',
+    'sphinx.ext.mathjax',
     # 'sphinx.ext.graphviz',
     # 'sphinx.ext.inheritance_diagram',
     # 'sphinx.ext.viewcode',
@@ -61,9 +62,6 @@ pygments_style = "sphinx"
 
 # Common definitions for the whole pages
 rst_epilog = r"""
-.. role:: synco
-    :class: synco
-
 .. |project| replace:: :synco:`nssvie`
 """
 
@@ -170,5 +168,20 @@ html_last_updated_fmt = "%b %d, %Y"
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
 
-html_js_files = ["js/custom-pydata.css"]
+html_js_files = ["custom-pydata.js"]
 # html_logo = '_static/images/icons/logo-imate-light.png'
+
+# =====
+# setup
+# =====
+
+def setup(app):
+    """
+    This function is used to employ a css file to the themes.
+    Note: paths are relative to /docs/source/_static
+    """
+
+    app.add_css_file('custom-pydata.css')
+    app.add_js_file('custom-pydata.js')
+    # app.add_css_file('css/custom.css')
+    # app.add_css_file('css/custom-anaconda-doc.css')
