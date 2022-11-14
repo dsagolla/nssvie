@@ -33,7 +33,7 @@ templates_path = ["_templates"]
 source_suffix = [".rst"]
 
 # The master toctree document.
-main_doc = "index"
+master_doc = 'index'
 
 # -- Project information -----------------------------------------------
 
