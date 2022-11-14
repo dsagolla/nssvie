@@ -1,104 +1,50 @@
-# =======
-# Imports
-# =======
-
+# Configuration file for the Sphinx documentation builder.
+#
+# For the full list of built-in configuration values, see the documentation:
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
 from datetime import date
 
-# -- General configuration ---------------------------------------------
-
-extensions = [
-    "sphinx_copybutton",
-    "sphinx_design",
-    "sphinx.ext.intersphinx",
-    # 'sphinx.ext.autodoc',
-    # 'sphinx_math_dollar',
-    'sphinx.ext.mathjax',
-    # 'sphinx.ext.graphviz',
-    # 'sphinx.ext.inheritance_diagram',
-    # 'sphinx.ext.viewcode',
-    'sphinx_toggleprompt',
-    # 'sphinx.ext.autosectionlabel',
-    # 'sphinx.ext.autosummary',
-    # 'sphinx_automodapi.automodapi',
-    # 'numpydoc',
-    'sphinx-prompt',
-]
-
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ["_templates"]
-
-# The suffix(es) of source filenames.
-# You can specify multiple suffix as a list of string:
-
-source_suffix = [".rst"]
-
-# The master toctree document.
-master_doc = 'index'
-
-# -- Project information -----------------------------------------------
+# -- Project information -----------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "nssvie"
 author = "Daniel Sagolla"
 copyright = f"{date.today().year}, " + author
 version = "0.0.1"
-# The full version, including alpha/beta/rc tags.
 release = "0.0.1"
 
-# -- Intersphinx Mapping------------------------------------------------
+# -- General configuration ---------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-intersphinx_mapping = {}
+extensions = []
 
-# -- Sphinx Settings ---------------------------------------------------
+source_suffix = {".rst": "restructuredtext"}
 
-# Check links and references
-nitpicky = True
-
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path.
+root_doc = "index"
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+
+templates_path = ["_templates"]
+
+# rst_epilog = """
+# .. |psf| replace:: Python Software Foundation
+# """
+# rst_epilog = """
+# .. |psf| replace:: Python Software Foundation
+# """
 pygments_style = "sphinx"
 
-# Copy button settings
-copybutton_prompt_is_regexp = True
-copybutton_prompt_text = r">>> |\.\.\. "
-
-# Automatically generate autosummary after each build
-autosummary_generate = True
-autosummary_imported_members = True
-
-# Remove the module names from the signature
-# add_module_names = False
-
-# automodapi
-numpydoc_show_class_members = False
-
-# Added after including sphinx_math_dollar. The following prevents msthjax to
-# parse $ and $$.
-mathjax3_config = {
-    "tex2jax": {
-        "inlineMath": [["\\(", "\\)"]],
-        "displayMath": [["\\[", "\\]"]],
-    },
-}
-
-# LaTeX
-# 'sphinx.ext.imgmath',
-# imgmath_image_format = 'svg'
-
 # -- Options for HTML output -------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "pydata_sphinx_theme"
-html_favicon = "_static/images/icons/favicon.ico"
 
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
 html_theme_options = {
     "navbar_align": "left",
+    "navbar_start": ["navbar-logo"],
+    "navbar_center": ["navbar-nav"],
     "navbar_end": [
         "theme-switcher",
-        # "search-field.html",
+        "searchbox.html",
         "navbar-icon-links.html",
     ],
     "page_sidebar_items": ["page-toc"],
@@ -133,49 +79,10 @@ html_theme_options = {
     # "pygment_light_style": "tango",
     # "pygment_dark_style": "native",
     "logo": {
-        "image_light": "images/icons/logo-nssvie-light.png",
-        "image_dark": "images/icons/logo-nssvie-dark.png",
+        "image_light": "icons/logo-nssvie-light.png",
+        "image_dark": "icons/logo-nssvie-dark.png",
     },
 }
 
-html_context = {
-    "default_mode": "auto",
-    "github_url": "https://github.com",
-    "github_user": "dsagolla",
-    "github_repo": "nssvie",
-    "github_version": "main",
-    "doc_path": "docs/source",
-}
 
-html_sidebars = {
-    "index": [],  # Remove sidebars on landing page to save space
-}
-
-# html_sidebars = {
-#     "**": ["sidebar-nav-bs", "sidebar-ethical-ads"]
-# }
-
-html_title = f"{project} Manual"
-html_last_updated_fmt = "%b %d, %Y"
-
-html_static_path = ["_static"]
-html_css_files = ["custom.css"]
-
-html_js_files = ["custom-pydata.js"]
-# html_logo = '_static/images/icons/logo-imate-light.png'
-
-# =====
-# setup
-# =====
-
-
-def setup(app):
-    """
-    This function is used to employ a css file to the themes.
-    Note: paths are relative to /docs/source/_static
-    """
-
-    app.add_css_file('custom-pydata.css')
-    app.add_js_file('custom-pydata.js')
-    # app.add_css_file('css/custom.css')
-    # app.add_css_file('css/custom-anaconda-doc.css')
+html_static_path = ['_static']

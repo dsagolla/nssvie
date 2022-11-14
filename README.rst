@@ -111,7 +111,7 @@ so
 		>>> )
 		
 		>>> # Calculate numerical solution with m=100 intervals  
-		>>> svie_solution = svie.solve_method(m=100, solve_method="bpf")
+		>>> svie_solution = svie.solve_method(prec=100, solve_method="bpf")
 
 
 The parameters are
@@ -119,7 +119,7 @@ The parameters are
 + ``func``: the function :math:`f`.
 + ``k1``, ``k2``: the kernels :math:`k_1` and :math:`k_2`.
 + ``interval_end``: the right hand side of :math:`[0,T)`. Default is ``1.0``.
-+ ``m``: the number of intervals to divide :math:`[0,T)`. Default is ``50``.
++ ``prec``: the number of intervals to divide :math:`[0,T)`. Default is ``50``.
 + ``solve_method``: the choosen method based on orthogonal functions. Default is ``bpf``. 
 
 for the stochastic Volterra integral equation above.
