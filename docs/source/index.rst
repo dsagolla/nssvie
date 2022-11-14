@@ -18,7 +18,7 @@ nssvie
 .. |k-1-k-2| image:: images/k-1-k-2.svg
 .. |B-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/B-t.svg
 .. |ito-integral| image:: images/ito-integral.svg
-.. |example-1-eq| image:: images/example-1-eq.svg
+.. |example-1-eq| image:: images/example-1-eq.svg	
 .. |example-1-f| image:: images/example-1-f.svg
 .. |example-1-k-1| image:: images/example-1-k-1.svg
 .. |example-1-k-2| image:: images/example-1-k-2.svg
@@ -90,7 +90,7 @@ Usage
 
 Consider the following example of a stochastic Volterra integral equation
 
-	|example-1-eq|,
+|example-1-eq|,
 
 so 
 
@@ -138,16 +138,16 @@ Citation
 .. [1] Maleknejad, K., Khodabin, M., & Rostami, M. (2012). Numerical solution of stochastic Volterra integral equations by a stochastic operational matrix based on block pulse functions. Mathematical and computer Modelling, 55(3-4), 791-800. |maleknejad-et-al-2012-doi|    
 
 .. |licence| image:: https://img.shields.io/github/license/dsagolla/nssvie
-      :target: https://www.gnu.org/licenses/gpl-3.0.en.html
+		:target: https://www.gnu.org/licenses/gpl-3.0.en.html
 .. |pypi| image:: https://img.shields.io/pypi/v/nssvie
-      :target: https://pypi.org/project/nssvie
+		:target: https://pypi.org/project/nssvie
 .. |release| image:: https://img.shields.io/github/v/release/dsagolla/nssvie?display_name=release&sort=semver
-      :target: https://github.com/dsagolla/nssvie/releases
+		:target: https://github.com/dsagolla/nssvie/releases
 .. |format| image:: https://img.shields.io/pypi/format/nssvie
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/nssvie
-      :target: https://www.python.org/
+		:target: https://www.python.org/
 .. |maleknejad-et-al-2012-doi| image:: https://img.shields.io/badge/DOI-10.1016%2Fj.mcm.2011.08.053-blue
-      :target: https://doi.org/10.1016/j.mcm.2011.08.053
-      :alt: doi: 10.1016/j.mcm.2011.08.053
+		:target: https://doi.org/10.1016/j.mcm.2011.08.053
+		:alt: doi: 10.1016/j.mcm.2011.08.053
 .. |docs| image:: https://readthedocs.org/projects/nssvie/badge/?version=latest
-      :target: https://nssvie.readthedocs.io/en/latest/?badge=latest
+		:target: https://nssvie.readthedocs.io/en/latest/?badge=latest
