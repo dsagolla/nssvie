@@ -7,7 +7,7 @@ from datetime import date
 # -- General configuration ---------------------------------------------
 
 extensions = [
-    "sphinx-copybutton",
+    "sphinx_copybutton",
     "sphinx_design",
     "sphinx.ext.intersphinx",
     # 'sphinx.ext.autodoc',
