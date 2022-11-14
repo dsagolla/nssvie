@@ -20,7 +20,7 @@
    :hidden:
 
    Home <self>
-   Theory <theory/index>
+   Theory <theory/theory_index>
    API Reference <api>
 
 .. .. include:: ../../README.rst
@@ -42,7 +42,7 @@ integral equations.
       :class-card: custom-card-link
 
    .. grid-item-card:: Theory
-      :link: theory/index.html
+      :link: theory/theory_index.html
       :text-align: center
       :class-card: custom-card-link
 
