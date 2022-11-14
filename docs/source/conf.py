@@ -38,13 +38,14 @@ pygments_style = "sphinx"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "pydata_sphinx_theme"
+html_favicon = "_static/icons/favicon.png"
 
 html_theme_options = {
     "navbar_align": "left",
     "navbar_center": ["navbar-nav"],
     "navbar_end": [
         "theme-switcher",
-        "searchbox.html",
+        "search-field.html",
         "navbar-icon-links.html",
     ],
     "page_sidebar_items": ["page-toc"],
@@ -85,4 +86,10 @@ html_theme_options = {
 }
 
 
-html_static_path = ['_static']
+html_static_path = ["_static"]
+
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3", None),
+    "numpy": ("https://numpy.org/doc/stable/", None),
+    "scipy": ("https://docs.scipy.org/doc/scipy/", None),
+}

@@ -42,32 +42,10 @@ span.synco{
 /*   shape-rendering: geometricprecision; */
 /* } */
 
-/* BibTex highlighting */
-pre[class*=language-bib] {
-    font-size: 0.85em !important;
-}
-
 /* Small buttons (see publications section, like BibTex button) */
 .btn-extra-sm {
     padding: .0rem .4rem;
     line-height: 1.35;
-}
-
-/* .highlight-BibTeX { */
-:not(pre)>code[class*=language-], pre[class*=language-] {
-    background-color: var(--pst-color-surface) !important;
-}
-
-/* Use for generic grid-cards so the card gets darker on hover. */
-.custom-card-link:hover {
-    /* --pst-color-panel-background: blue; */
-    filter: invert(4%);
-}
-
-/* Use for grid-cards with images so the card gets brighter instead of darker
- * on hover. */
-.custom-card-link-2:hover {
-    filter: contrast(1.05);
 }
 
 /* copybutton overlaps with toggle-prompt in code-blocks for python.

@@ -1,5 +1,5 @@
 nssvie 
-******
+######
 
 .. toctree::
    :maxdepth: 1
@@ -10,7 +10,7 @@ nssvie
    Theory <self>
    API Reference <self>
 
-|pypi| |pyversions| |docs| |licence|
+|build| |docs| |pypi| |pyversions| |licence|
 
 .. |stochastic-volterra-integral-equation| image:: images/stochastic-volterra-integral-equation.svg
 .. |X-t| image:: images/X-t.svg
@@ -23,10 +23,29 @@ nssvie
 .. |example-1-k-1| image:: images/example-1-k-1.svg
 .. |example-1-k-2| image:: images/example-1-k-2.svg
 
-A python package to generate a set of orthogonal functions.
+A python package for computing a numerical solution of stochastic Volterra 
+integral equations.
+
+.. grid:: 4
+
+   .. grid-item-card:: GitHub
+      :link: https://github.com/dsagolla/nssvie
+      :text-align: center
+
+   .. grid-item-card:: PyPI
+      :link: https://pypi.org/project/nssvie/
+      :text-align: center
+
+   .. grid-item-card:: Theory
+      :link: ./index.html
+      :text-align: center
+
+   .. grid-item-card:: API reference
+      :link: ./index.html
+      :text-align: center
 
 Overview
-========
+--------
 
 A python package for computing a numerical solution of stochastic Volterra 
 integral equations of the second kind
@@ -47,7 +66,7 @@ pulse functions as suggested in `Maleknejad et. al (2012)
 
 
 Install
-=======
+-------
 
 Install using either of the following two methods.
 
@@ -60,7 +79,7 @@ The ``nssvie`` package is available on `PyPi <https://pypi.org/project/nssvie/>`
 
 .. code-block:: bash
 
-      pip install nssvie
+    $ pip install nssvie
 
 
 2. Install from Source
@@ -72,21 +91,21 @@ Install directly from the source code by
 
 .. code-block:: bash
 
-	git clone https://github.com/dsagolla/nssvie.git
-	cd nssvie
-	pip install .	
+	$ git clone https://github.com/dsagolla/nssvie.git
+	$ cd nssvie
+	$ pip install .	
 
 Dependencies
 ~~~~~~~~~~~~
 
 ``nssvie`` uses 
 
-+ `numpy <https://numpy.org/>`_  for many calculations, 
-+ `scipy <https://scipy.org>`_ for computing the block pulse coefficients and
++ `NumPy <https://numpy.org/>`_  for many calculations, 
++ `SciPy <https://scipy.org>`_ for computing the block pulse coefficients and
 + `stochastic <https://pypi.org/project/stochastic/>`_ for sampling the Brownian Motion
 
 Usage 
-=====
+-----
 
 Consider the following example of a stochastic Volterra integral equation
 
@@ -98,28 +117,28 @@ so
 + |example-1-k-1| and   
 + |example-1-k-2|.
 
-	.. code-block:: python
+.. code-block:: python
 	
-		>>> from nssvie import StochasticVolterraIntegralEquations
-				
-		>>> # Define the function and the kernels of the stochastic Volterra 
-		>>> # integral equation
-		>>> def f(t):
-		>>> 	return 1.0
-		
-		>>> def k1(s,t):
-		>>> 	return s**2
-		
-		>>> def k2(s,t):
-		>>> 	return s
-		
-		>>> # Generate the stochastic Volterra integral equation
-		>>> svie = StochasticVolterraIntegralEquations(
-		>>> 	func=f, k1=k1, k2=k2, interval_end=0.5
-		>>> )
-		
-		>>> # Calculate numerical solution with m=100 intervals  
-		>>> svie_solution = svie.solve_method(prec=100, solve_method="bpf")
+	>>> from nssvie import StochasticVolterraIntegralEquations
+			
+	>>> # Define the function and the kernels of the stochastic Volterra 
+	>>> # integral equation
+	>>> def f(t):
+	>>> 	return 1.0
+	
+	>>> def k1(s,t):
+	>>> 	return s**2
+	
+	>>> def k2(s,t):
+	>>> 	return s
+	
+	>>> # Generate the stochastic Volterra integral equation
+	>>> svie = StochasticVolterraIntegralEquations(
+	>>> 	func=f, k1=k1, k2=k2, interval_end=0.5
+	>>> )
+	
+	>>> # Calculate numerical solution with m=100 intervals  
+	>>> svie_solution = svie.solve_method(prec=100, solve_method="bpf")
 
 
 The parameters are
@@ -133,7 +152,7 @@ The parameters are
 for the stochastic Volterra integral equation above.
 
 Citation
-========
+--------
 
 .. [1] Maleknejad, K., Khodabin, M., & Rostami, M. (2012). Numerical solution of stochastic Volterra integral equations by a stochastic operational matrix based on block pulse functions. Mathematical and computer Modelling, 55(3-4), 791-800. |maleknejad-et-al-2012-doi|    
 
@@ -151,3 +170,5 @@ Citation
 		:alt: doi: 10.1016/j.mcm.2011.08.053
 .. |docs| image:: https://readthedocs.org/projects/nssvie/badge/?version=latest
 		:target: https://nssvie.readthedocs.io/en/latest/?badge=latest
+.. |build| image:: https://img.shields.io/github/workflow/status/dsagolla/nssvie/Upload%20Python%20Package
+		:target: https://github.com/dsagolla/nssvie/actions/workflows/python-publish.yml
