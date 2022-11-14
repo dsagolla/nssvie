@@ -16,11 +16,15 @@ release = "0.0.1"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+    "sphinx_copybutton",
+    "sphinx_design",
+    "sphinx.ext.intersphinx",
+]
 
 source_suffix = {".rst": "restructuredtext"}
-
 root_doc = "index"
+
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 templates_path = ["_templates"]
@@ -40,7 +44,6 @@ html_theme = "pydata_sphinx_theme"
 
 html_theme_options = {
     "navbar_align": "left",
-    "navbar_start": ["navbar-logo"],
     "navbar_center": ["navbar-nav"],
     "navbar_end": [
         "theme-switcher",
