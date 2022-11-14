@@ -20,7 +20,31 @@ extensions = [
     "sphinx_copybutton",
     "sphinx_design",
     "sphinx.ext.intersphinx",
+    "sphinx.ext.autodoc",
+    "sphinx_math_dollar",
+    "sphinx_toggleprompt",
+    "numpydoc",
+    "sphinx-prompt",
+    "sphinx.ext.autosummary"
 ]
+
+# Copy button settings
+copybutton_prompt_is_regexp = True
+copybutton_prompt_text = r'>>> |\.\.\. '
+
+# Automatically generate autosummary after each build
+autosummary_generate = True
+autosummary_imported_members = True
+
+# Added after including sphinx_math_dollar. The following prevents msthjax to
+# parse $ and $$.
+mathjax3_config = {
+    'tex2jax': {
+        'inlineMath': [["\\(", "\\)"]],
+        'displayMath': [["\\[", "\\]"]],
+    },
+}
+
 
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
@@ -41,7 +65,7 @@ html_theme = "pydata_sphinx_theme"
 html_favicon = "_static/icons/favicon.png"
 
 html_theme_options = {
-    "navbar_align": "left",
+    "navbar_align": "content",
     "navbar_center": ["navbar-nav"],
     "navbar_end": [
         "theme-switcher",
@@ -85,6 +109,12 @@ html_theme_options = {
     },
 }
 
+html_sidebars = {
+    "**": ["sidebar-nav-bs", "sidebar-ethical-ads"]
+}
+
+html_title = f"{project} Manual"
+html_last_updated_fmt = '%b %d, %Y'
 
 html_static_path = ["_static"]
 
@@ -93,3 +123,19 @@ intersphinx_mapping = {
     "numpy": ("https://numpy.org/doc/stable/", None),
     "scipy": ("https://docs.scipy.org/doc/scipy/", None),
 }
+
+# =====
+# setup
+# =====
+
+
+def setup(app):
+    """
+    This function is used to employ a css file to the themes.
+    Note: paths are relative to /docs/source/_static
+    """
+
+    app.add_css_file('css/custom-pydata.css')
+    app.add_js_file('js/custom-pydata.js')
+    # app.add_css_file('css/custom.css')
+    # app.add_css_file('css/custom-anaconda-doc.css')

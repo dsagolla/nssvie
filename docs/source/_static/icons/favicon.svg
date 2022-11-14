@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.2" width="148mm" height="105mm" viewBox="0 0 14800 10500" preserveAspectRatio="xMidYMid" fill-rule="evenodd" stroke-width="28.222" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" xmlns:ooo="http://xml.openoffice.org/svg/export" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:presentation="http://sun.com/xmlns/staroffice/presentation" xmlns:smil="http://www.w3.org/2001/SMIL20/" xmlns:anim="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" xml:space="preserve">
+<svg version="1.2" width="297mm" height="210mm" viewBox="0 0 29700 21000" preserveAspectRatio="xMidYMid" fill-rule="evenodd" stroke-width="28.222" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" xmlns:ooo="http://xml.openoffice.org/svg/export" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:presentation="http://sun.com/xmlns/staroffice/presentation" xmlns:smil="http://www.w3.org/2001/SMIL20/" xmlns:anim="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" xml:space="preserve">
  <defs class="ClipPathGroup">
   <clipPath id="presentation_clip_path" clipPathUnits="userSpaceOnUse">
-   <rect x="0" y="0" width="14800" height="10500"/>
+   <rect x="0" y="0" width="29700" height="21000"/>
   </clipPath>
   <clipPath id="presentation_clip_path_shrink" clipPathUnits="userSpaceOnUse">
-   <rect x="14" y="10" width="14771" height="10479"/>
+   <rect x="29" y="21" width="29641" height="20958"/>
   </clipPath>
  </defs>
  <defs>
@@ -21,7 +21,7 @@
   </font>
  </defs>
  <defs class="TextShapeIndex">
-  <g ooo:slide="id1" ooo:id-list="id3 id4 id5 id6 id7 id8"/>
+  <g ooo:slide="id1" ooo:id-list="id3"/>
  </defs>
  <defs class="EmbeddedBulletChars">
   <g id="bullet-char-template-57356" transform="scale(0.00048828125,-0.00048828125)">
@@ -66,40 +66,15 @@
    <g id="container-id1">
     <g id="id1" class="Slide" clip-path="url(#presentation_clip_path)">
      <g class="Page">
-      <g class="TextShape">
+      <g class="Graphic">
        <g id="id3">
-        <rect class="BoundingBox" stroke="none" fill="none" x="3781" y="2531" width="4501" height="3251"/>
-        <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Syncopate" font-size="2540px" font-weight="700"><tspan class="TextPosition" x="4031" y="4586"><tspan fill="rgb(87,154,202)" stroke="none" style="white-space: pre">n</tspan></tspan></tspan></text>
-       </g>
-      </g>
-      <g class="TextShape">
-       <g id="id4">
-        <rect class="BoundingBox" stroke="none" fill="none" x="6031" y="2781" width="4501" height="3251"/>
-        <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Syncopate" font-size="2540px" font-weight="700"><tspan class="TextPosition" x="6281" y="4836"><tspan fill="rgb(87,154,202)" stroke="none" style="white-space: pre">s</tspan></tspan></tspan></text>
-       </g>
-      </g>
-      <g class="TextShape">
-       <g id="id5">
-        <rect class="BoundingBox" stroke="none" fill="none" x="5031" y="4781" width="4501" height="3251"/>
-        <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Syncopate" font-size="2540px" font-weight="700"><tspan class="TextPosition" x="5281" y="6836"><tspan fill="rgb(87,154,202)" stroke="none" style="white-space: pre">v</tspan></tspan></tspan></text>
-       </g>
-      </g>
-      <g class="TextShape">
-       <g id="id6">
-        <rect class="BoundingBox" stroke="none" fill="none" x="3281" y="4281" width="4501" height="3251"/>
-        <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Syncopate" font-size="2540px" font-weight="700"><tspan class="TextPosition" x="3531" y="6336"><tspan fill="rgb(87,154,202)" stroke="none" style="white-space: pre">s</tspan></tspan></tspan></text>
-       </g>
-      </g>
-      <g class="TextShape">
-       <g id="id7">
-        <rect class="BoundingBox" stroke="none" fill="none" x="6781" y="5531" width="4501" height="3251"/>
-        <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Syncopate" font-size="2540px" font-weight="700"><tspan class="TextPosition" x="7031" y="7586"><tspan fill="rgb(87,154,202)" stroke="none" style="white-space: pre">i</tspan></tspan></tspan></text>
-       </g>
-      </g>
-      <g class="TextShape">
-       <g id="id8">
-        <rect class="BoundingBox" stroke="none" fill="none" x="7531" y="4531" width="4501" height="3251"/>
-        <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Syncopate" font-size="2540px" font-weight="700"><tspan class="TextPosition" x="7781" y="6586"><tspan fill="rgb(87,154,202)" stroke="none" style="white-space: pre">e</tspan></tspan></tspan></text>
+        <rect class="BoundingBox" stroke="none" fill="none" x="-5656" y="-5500" width="46407" height="32640"/>
+        <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Syncopate" font-size="7876px" font-weight="700"><tspan class="TextPosition" x="7002" y="8761"><tspan fill="rgb(87,154,202)" stroke="none" style="white-space: pre">n</tspan></tspan></tspan></text>
+        <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Syncopate" font-size="7876px" font-weight="700"><tspan class="TextPosition" x="14045" y="9536"><tspan fill="rgb(87,154,202)" stroke="none" style="white-space: pre">s</tspan></tspan></tspan></text>
+        <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Syncopate" font-size="7876px" font-weight="700"><tspan class="TextPosition" x="10915" y="15737"><tspan fill="rgb(87,154,202)" stroke="none" style="white-space: pre">v</tspan></tspan></tspan></text>
+        <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Syncopate" font-size="7876px" font-weight="700"><tspan class="TextPosition" x="5437" y="14187"><tspan fill="rgb(87,154,202)" stroke="none" style="white-space: pre">s</tspan></tspan></tspan></text>
+        <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Syncopate" font-size="7876px" font-weight="700"><tspan class="TextPosition" x="16392" y="18063"><tspan fill="rgb(87,154,202)" stroke="none" style="white-space: pre">i</tspan></tspan></tspan></text>
+        <text class="SVGTextShape"><tspan class="TextParagraph" font-family="Syncopate" font-size="7876px" font-weight="700"><tspan class="TextPosition" x="18740" y="14962"><tspan fill="rgb(87,154,202)" stroke="none" style="white-space: pre">e</tspan></tspan></tspan></text>
        </g>
       </g>
      </g>

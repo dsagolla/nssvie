@@ -8,7 +8,7 @@ nssvie
 
    Home <self>
    Theory <self>
-   API Reference <self>
+   API Reference <api>
 
 |build| |docs| |pypi| |pyversions| |licence|
 
