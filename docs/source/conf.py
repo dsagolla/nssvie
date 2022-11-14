@@ -22,9 +22,6 @@ extensions = [
     "sphinx.ext.intersphinx",
 ]
 
-source_suffix = {".rst": "restructuredtext"}
-root_doc = "index"
-
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 templates_path = ["_templates"]
