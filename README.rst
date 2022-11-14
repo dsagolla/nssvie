@@ -1,18 +1,18 @@
 nssvie 
 ******
 
-|pypi| |pyversions| |docs| |licence|
+|build| |docs| |pypi| |pyversions| |licence|
 
-.. |stochastic-volterra-integral-equation| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/stochastic-volterra-integral-equation.svg
-.. |X-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/X-t.svg
-.. |f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/f.svg
-.. |k-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/k-1-k-2.svg
-.. |B-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/B-t.svg
-.. |ito-integral| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/ito-integral.svg
-.. |example-1-eq| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-eq.svg
-.. |example-1-f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-f.svg
-.. |example-1-k-1| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-1.svg
-.. |example-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-2.svg
+.. |stochastic-volterra-integral-equation| image:: /docs/source/images/stochastic-volterra-integral-equation.svg
+.. |X-t| image:: /docs/source/images/X-t.svg
+.. |f| image:: /docs/source/images/f.svg
+.. |k-1-k-2| image:: /docs/source/images/k-1-k-2.svg
+.. |B-t| image:: /docs/source/images/B-t.svg
+.. |ito-integral| image:: /docs/source/images/ito-integral.svg
+.. |example-1-eq| image:: /docs/source/images/example-1-eq.svg
+.. |example-1-f| image:: /docs/source/images/example-1-f.svg
+.. |example-1-k-1| image:: /docs/source/images/example-1-k-1.svg
+.. |example-1-k-2| image:: /docs/source/images/example-1-k-2.svg
 
 A python package for computing a numerical solution of stochastic Volterra 
 integral equations of the second kind
@@ -143,3 +143,5 @@ Citation
     :alt: doi: 10.1016/j.mcm.2011.08.053
 .. |docs| image:: https://readthedocs.org/projects/nssvie/badge/?version=latest
     :target: https://nssvie.readthedocs.io/en/latest/?badge=latest
+.. |build| image:: https://img.shields.io/github/workflow/status/dsagolla/nssvie/Upload%20Python%20Package
+	:target: https://github.com/dsagolla/nssvie/actions/workflows/python-publish.yml
