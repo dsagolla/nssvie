@@ -14,4 +14,4 @@ Integral Equations
     :recursive:
     :template: autosummary/class.rst
     
-    nssvie.StochasticVolterraIntegralEquation
+    nssvie.SVIE

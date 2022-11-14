@@ -11,7 +11,7 @@ from numpy.linalg import solve
 from nssvie._orthogonal_functions import BlockPulseFunctions
 
 
-class StochasticVolterraIntegralEquation:
+class SVIE:
     """
     Generates a stochastic Volterra integral equation of the second
     kind.
@@ -41,14 +41,19 @@ class StochasticVolterraIntegralEquation:
     def solve_numerical(self, prec=50, solve_method="bpf"):
         """Returns a numerical solution for the given linear stochastic
         Volterra integral equation of the second kind using an algorithm
-        proposed by `Maleknejad et. al (2012) <https://www.sciencedirect.com/science/article/pii/S0895717711005504/>`__.
+        proposed by 
 
         Parameters
         ----------
         prec : int, default 50
             descr
         solve_method : str, default "bpf"
-            descr
+            If ``solve_methods="bpf"`` an algorithm presented in
+            `Maleknejad et. al (2012)
+            <https://www.sciencedirect.com/science/
+            article/pii/S0895717711005504/>`_ is used which uses an
+            operational matrix of integration based on block pulse
+            functions.
 
         Returns
         -------

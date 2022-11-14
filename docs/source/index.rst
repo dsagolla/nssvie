@@ -41,8 +41,7 @@ integral equations.
       :text-align: center
 
    .. grid-item-card:: API reference
-      :link: api
-	  :link-type: ref
+      :link: ./api.html
       :text-align: center
 
 Overview

@@ -1,9 +1,9 @@
-﻿nssvie.StochasticVolterraIntegralEquation
-=========================================
+﻿nssvie.SVIE
+===========
 
 .. currentmodule:: nssvie
 
-.. autoclass:: StochasticVolterraIntegralEquation
+.. autoclass:: SVIE
    :no-members:
    :no-inherited-members:
    :no-special-members:
@@ -13,7 +13,7 @@
       .. autosummary::
          :toctree:
       
-         StochasticVolterraIntegralEquation.solve_numerical
+         SVIE.solve_numerical
       
   
 

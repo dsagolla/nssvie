@@ -4,8 +4,8 @@ Submodule containing classes of integral equations.
 
 Classes:
 --------
-StochasticVolterraIntegralEquation
+SVIE
 """
-from nssvie._integral_equations.svie import StochasticVolterraIntegralEquation
+from nssvie._integral_equations.svie import SVIE
 
-__all__ = ["StochasticVolterraIntegralEquation"]
+__all__ = ["SVIE"]

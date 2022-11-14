@@ -7,9 +7,9 @@ functions as suggested in `Maleknejad et. al (2012)
 In this package we implemented the suggested methods from the cited
 paper. For a detailed theoretical background we refer to this paper.
 """
-from nssvie._integral_equations import StochasticVolterraIntegralEquation
+from nssvie._integral_equations import SVIE
 
-__all__ = ["StochasticVolterraIntegralEquation"]            # noqa: F401
+__all__ = ["SVIE"]                                          # noqa: F401
 
 from nssvie._version import version
 
