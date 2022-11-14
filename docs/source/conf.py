@@ -62,7 +62,7 @@ pygments_style = "sphinx"
 # Common definitions for the whole pages
 rst_epilog = r"""
 .. role:: synco
-   :class: synco
+    :class: synco
 
 .. |project| replace:: :synco:`nssvie`
 """
