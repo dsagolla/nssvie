@@ -16,19 +16,19 @@ class StochasticVolterraIntegralEquation:
     Generates a stochastic Volterra integral equation of the second
     kind.
 
-    Parameters:
-    -----------
-        func : callable
-            descr
-        kernel_1 : callable
-            descr
-        kernel_2 : callable
-            descr
-        interval_end : float, default=1.0
-            descr
+    Parameters
+    ----------
+    func : callable
+        descr
+    kernel_1 : callable
+        descr
+    kernel_2 : callable
+        descr
+    interval_end : float, default=1.0
+        descr
 
-    Methods:
-    --------
+    Methods
+    -------
     solve_numerical
     """
 
@@ -39,20 +39,21 @@ class StochasticVolterraIntegralEquation:
         self.interval_end = float(interval_end)
 
     def solve_numerical(self, prec=50, solve_method="bpf"):
-        """Return a numerical solution for the given linear stochastic
-        Volterra integral equation of the second kind.
+        """Returns a numerical solution for the given linear stochastic
+        Volterra integral equation of the second kind using an algorithm
+        proposed by `Maleknejad et. al (2012) <https://www.sciencedirect.com/science/article/pii/S0895717711005504/>`__.
 
-        Parameters:
-        -----------
-            prec : int, default 50
-                descr
-            solve_method : str, default "bpf"
-                descr
+        Parameters
+        ----------
+        prec : int, default 50
+            descr
+        solve_method : str, default "bpf"
+            descr
 
-        Returns:
-        --------
-            np.ndrarray
-                descr
+        Returns
+        -------
+        np.ndrarray
+            descr
         """
         if solve_method == "bpf":
             # Approximate with an operational matrix of integration

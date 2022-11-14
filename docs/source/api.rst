@@ -4,9 +4,9 @@
 API Reference
 =============
 
--------
-Classes
--------
+------------------
+Integral Equations
+------------------
 
 .. autosummary::
     :toctree: generated

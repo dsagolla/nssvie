@@ -34,7 +34,7 @@ copybutton_prompt_text = r'>>> |\.\.\. '
 
 # Automatically generate autosummary after each build
 autosummary_generate = True
-autosummary_imported_members = True
+# autosummary_imported_members = True
 
 # Added after including sphinx_math_dollar. The following prevents msthjax to
 # parse $ and $$.
@@ -65,8 +65,6 @@ html_theme = "pydata_sphinx_theme"
 html_favicon = "_static/icons/favicon.png"
 
 html_theme_options = {
-    "navbar_align": "content",
-    "navbar_center": ["navbar-nav"],
     "navbar_end": [
         "theme-switcher",
         "search-field.html",
@@ -101,12 +99,21 @@ html_theme_options = {
             "type": "fontawesome",
         },
     ],
-    # "pygment_light_style": "tango",
-    # "pygment_dark_style": "native",
+    "pygment_light_style": "tango",
+    "pygment_dark_style": "native",
     "logo": {
         "image_light": "icons/logo-nssvie-light.png",
         "image_dark": "icons/logo-nssvie-dark.png",
     },
+}
+
+html_context = {
+    "default_mode": "auto",
+    "github_url": "https://github.com",
+    "github_user": "dsagolla",
+    "github_repo": "nssvie",
+    "github_version": "main",
+    "doc_path": "docs/source",
 }
 
 html_sidebars = {
@@ -117,6 +124,8 @@ html_title = f"{project} Manual"
 html_last_updated_fmt = '%b %d, %Y'
 
 html_static_path = ["_static"]
+
+html_js_files = ["js/custom-pydata.css"]
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
