@@ -22,6 +22,7 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.autodoc",
     "sphinx_math_dollar",
+    "sphinx.ext.mathjax",
     "sphinx_toggleprompt",
     "numpydoc",
     "sphinx-prompt",
@@ -45,6 +46,7 @@ mathjax3_config = {
     },
 }
 
+add_function_parentheses = False
 
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
@@ -67,9 +69,7 @@ html_favicon = "_static/icons/favicon.png"
 html_theme_options = {
     "navbar_end": [
         "theme-switcher",
-        "search-field.html",
-        "navbar-icon-links.html",
-    ],
+        "navbar-icon-links"],
     "page_sidebar_items": ["page-toc"],
     # "header_links_before_dropdown": 4,
     "use_edit_page_button": False,
@@ -99,8 +99,8 @@ html_theme_options = {
             "type": "fontawesome",
         },
     ],
-    "pygment_light_style": "tango",
-    "pygment_dark_style": "native",
+    # "pygment_light_style": "tango",
+    # "pygment_dark_style": "native",
     "logo": {
         "image_light": "icons/logo-nssvie-light.png",
         "image_dark": "icons/logo-nssvie-dark.png",
@@ -125,26 +125,8 @@ html_last_updated_fmt = '%b %d, %Y'
 
 html_static_path = ["_static"]
 
-html_js_files = ["js/custom-pydata.css"]
-
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
     "numpy": ("https://numpy.org/doc/stable/", None),
     "scipy": ("https://docs.scipy.org/doc/scipy/", None),
 }
-
-# =====
-# setup
-# =====
-
-
-def setup(app):
-    """
-    This function is used to employ a css file to the themes.
-    Note: paths are relative to /docs/source/_static
-    """
-
-    app.add_css_file('css/custom-pydata.css')
-    app.add_js_file('js/custom-pydata.js')
-    # app.add_css_file('css/custom.css')
-    # app.add_css_file('css/custom-anaconda-doc.css')
