@@ -30,8 +30,13 @@ extensions = [
     "sphinx_design",
 ]
 
+# Copy button settings
+copybutton_prompt_is_regexp = True
+copybutton_prompt_text = r">>> |\.\.\. "
+
 # Automatically generate autosummary after each build
 autosummary_generate = True
+# autosummary_imported_members = True
 
 # Added after including sphinx_math_dollar. The following prevents msthjax to
 # parse $ and $$.
@@ -46,6 +51,14 @@ add_function_parentheses = False
 
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
+templates_path = ["_templates"]
+
+# rst_epilog = """
+# .. |psf| replace:: Python Software Foundation
+# """
+# rst_epilog = """
+# .. |psf| replace:: Python Software Foundation
+# """
 pygments_style = "sphinx"
 
 # -- Options for HTML output -------------------------------------------------
@@ -59,11 +72,13 @@ html_theme_options = {
         "image_light": "icons/logo-nssvie-light.svg",
         "image_dark": "icons/logo-nssvie-dark.svg",
     },
-    "use_edit_page_button": False,
-    "navbar_start": ["navbar-logo"],
-    "navbar_center": ["navbar-nav"],
+    # "page_sidebar_items": ["page-toc"],
+    # "collapse_navigation": True,
+    # "show_prev_next": False,
+    # "header_links_before_dropdown": 4,
+    # "use_edit_page_button": False,
+    "navbar_align": "left",
     "navbar_end": ["theme-switcher", "navbar-icon-links"],
-    "navbar_align": "content",
     "icon_links": [
         {
             "name": "GitHub",
@@ -90,21 +105,31 @@ html_theme_options = {
             "type": "fontawesome",
         },
     ],
-    "page_sidebar_items": ["page-toc"],
-    "show_prev_next": False,
-    "footer_items": ["sphinx-version", "copyright"],
+    "footer_items": ["copyright.html"],
 }
 
-html_sidebars = {"**": ["search-field", "sidebar-nav-bs.html", "sidebar-ethical-ads"]}
-templates_path = ["_templates"]
-html_static_path = ["_static"]
-html_css_files = [
-    "nssvie.css",
-]
+html_context = {
+    "default_mode": "auto",
+    "github_url": "https://github.com",
+    "github_user": "dsagolla",
+    "github_repo": "nssvie",
+    "github_version": "main",
+    "doc_path": "docs/source",
+}
+
+html_sidebars = {
+    "**": ["searchbox.html", "sidebar-nav-bs.html", "sidebar-ethical-ads"],
+}
 
 html_title = f"{project} Manual"
 html_last_updated_fmt = "%b %d, %Y"
 html_context = {"default_mode": "light"}
+html_css_files = [
+    "nssvie.css",
+]
+
+html_static_path = ["_static"]
+
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),

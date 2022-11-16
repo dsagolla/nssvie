@@ -7,26 +7,26 @@ nssvie
    :hidden:
 
    Home <self>
-   Theory <self>
-   API Reference <api>
+   Theory <theory/index>
+   API Reference <reference/api>
 
 |build| |docs| |pypi| |pyversions| |licence|
 
-.. |stochastic-volterra-integral-equation| image:: images/stochastic-volterra-integral-equation.svg
-.. |X-t| image:: images/X-t.svg
-.. |f| image:: images/f.svg
-.. |k-1-k-2| image:: images/k-1-k-2.svg
+.. |stochastic-volterra-integral-equation| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/stochastic-volterra-integral-equation.svg
+.. |X-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/X-t.svg
+.. |f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/f.svg
+.. |k-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/k-1-k-2.svg
 .. |B-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/B-t.svg
-.. |ito-integral| image:: images/ito-integral.svg
-.. |example-1-eq| image:: images/example-1-eq.svg	
-.. |example-1-f| image:: images/example-1-f.svg
-.. |example-1-k-1| image:: images/example-1-k-1.svg
-.. |example-1-k-2| image:: images/example-1-k-2.svg
+.. |ito-integral| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/ito-integral.svg
+.. |example-1-eq| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-eq.svg	
+.. |example-1-f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-f.svg
+.. |example-1-k-1| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-1.svg
+.. |example-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-2.svg
 
 A python package for computing a numerical solution of stochastic Volterra 
 integral equations.
 
-.. grid:: 4
+.. grid:: 2
 
    .. grid-item-card:: GitHub
       :link: https://github.com/dsagolla/nssvie
@@ -37,12 +37,89 @@ integral equations.
       :text-align: center
 
    .. grid-item-card:: Theory
-      :link: ./index.html
+      :link: theory/index.html
       :text-align: center
 
    .. grid-item-card:: API reference
-      :link: ./api.html
+      :link: reference/api.html
       :text-align: center
+
+.. grid:: 2
+
+    .. grid-item-card::
+        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/index-images/getting_started.svg
+
+        Getting Started
+        ^^^^^^^^^^^^^^^
+
+        New to NumPy? Check out the Absolute Beginner's Guide. It contains an
+        introduction to NumPy's main concepts and links to additional tutorials.
+
+        +++
+
+        .. button-link:: https://github.com/dsagolla/nssvie
+            :expand:
+            :color: secondary
+            :click-parent:
+
+            To the absolute beginner's guide
+
+    .. grid-item-card::
+        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/index-images/user_guide.svg
+
+        User Guide
+        ^^^^^^^^^^
+
+        The user guide provides in-depth information on the
+        key concepts of NumPy with useful background information and explanation.
+
+        +++
+
+        .. button-link:: https://pypi.org/project/nssvie/
+            :expand:
+            :color: secondary
+            :click-parent:
+
+            To the user guide
+
+    .. grid-item-card::
+        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/index-images/api.svg
+
+        API Reference
+        ^^^^^^^^^^^^^
+
+        The reference guide contains a detailed description of the functions,
+        modules, and objects included in NumPy. The reference describes how the
+        methods work and which parameters can be used. It assumes that you have an
+        understanding of the key concepts.
+
+        +++
+
+        .. button-ref:: theory/index
+            :expand:
+            :color: secondary
+            :click-parent:
+
+            To the reference guide
+
+    .. grid-item-card::
+        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/index-images/contributor.svg
+
+        Contributor's Guide
+        ^^^^^^^^^^^^^^^^^^^
+
+        Want to add to the codebase? Can help add translation or a flowchart to the
+        documentation? The contributing guidelines will guide you through the
+        process of improving NumPy.
+
+        +++
+
+        .. button-ref:: reference/api
+            :expand:
+            :color: secondary
+            :click-parent:
+
+            To the contributor's guide
 
 Overview
 --------
@@ -79,7 +156,7 @@ The ``nssvie`` package is available on `PyPi <https://pypi.org/project/nssvie/>`
 
 .. code-block:: bash
 
-    $ pip install nssvie
+    pip install nssvie
 
 
 2. Install from Source
@@ -91,9 +168,9 @@ Install directly from the source code by
 
 .. code-block:: bash
 
-	$ git clone https://github.com/dsagolla/nssvie.git
-	$ cd nssvie
-	$ pip install .	
+	git clone https://github.com/dsagolla/nssvie.git
+	cd nssvie
+	pip install .	
 
 Dependencies
 ~~~~~~~~~~~~
@@ -118,27 +195,27 @@ so
 + |example-1-k-2|.
 
 .. code-block:: python
+
+	from nssvie import StochasticVolterraIntegralEquations
+
+	# Define the function and the kernels of the stochastic Volterra 
+	# integral equation
+	def f(t):
+		return 1.0
+
+	def k1(s,t):
+		return s**2
+
+	def k2(s,t):
+		return s
 	
-	>>> from nssvie import StochasticVolterraIntegralEquations
-			
-	>>> # Define the function and the kernels of the stochastic Volterra 
-	>>> # integral equation
-	>>> def f(t):
-	>>> 	return 1.0
-	
-	>>> def k1(s,t):
-	>>> 	return s**2
-	
-	>>> def k2(s,t):
-	>>> 	return s
-	
-	>>> # Generate the stochastic Volterra integral equation
-	>>> svie = StochasticVolterraIntegralEquations(
-	>>> 	func=f, k1=k1, k2=k2, interval_end=0.5
-	>>> )
-	
-	>>> # Calculate numerical solution with m=100 intervals  
-	>>> svie_solution = svie.solve_method(prec=100, solve_method="bpf")
+	# Generate the stochastic Volterra integral equation
+	svie = StochasticVolterraIntegralEquations(
+		func=f, k1=k1, k2=k2, interval_end=0.5
+	)
+
+	# Calculate numerical solution with m=100 intervals  
+	svie_solution = svie.solve_method(prec=100, solve_method="bpf")
 
 
 The parameters are
