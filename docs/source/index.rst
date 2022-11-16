@@ -28,17 +28,27 @@ integral equations.
 
 .. grid:: 2
 
-	.. grid-item-card::
-		:img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/api.svg
+    .. grid-item-card:: GitHub
+        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/github.svg
+        :text-align: center
+        :link: https://github.com/dsagolla/nssvie/
 
-    .. grid-item-card::
-        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/api.svg
+    .. grid-item-card:: PyPi
+        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/python.svg
+        :text-align: center
+        :link: https://pypi.org/project/nssvie/
 
-    .. grid-item-card::
-        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/api.svg
+    .. grid-item-card:: Theory
+        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/book-solid.svg
+        :text-align: center
+        :link: theory/index
+        :link-type: any
 
-	.. grid-item-card::
-		:img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/api.svg
+    .. grid-item-card:: API Reference
+        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/magnifying-glass-solid.svg
+        :text-align: center
+        :link: reference/api
+        :link-type: any
 
 
 Overview
