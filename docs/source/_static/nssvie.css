@@ -16,6 +16,11 @@
     padding-right: .5em;
   }
 
+  pre, code {
+    font-size: 100%;
+    line-height: 155%;
+  }
+
   /* Main page overview cards */
 
 .sd-card {

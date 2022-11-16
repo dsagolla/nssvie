@@ -28,98 +28,18 @@ integral equations.
 
 .. grid:: 2
 
-   .. grid-item-card:: GitHub
-      :link: https://github.com/dsagolla/nssvie
-      :text-align: center
-
-   .. grid-item-card:: PyPI
-      :link: https://pypi.org/project/nssvie/
-      :text-align: center
-
-   .. grid-item-card:: Theory
-      :link: theory/index.html
-      :text-align: center
-
-   .. grid-item-card:: API reference
-      :link: reference/api.html
-      :text-align: center
-
-.. grid:: 2
+	.. grid-item-card::
+		:img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/api.svg
 
     .. grid-item-card::
-        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/index-images/getting_started.svg
-
-        Getting Started
-        ^^^^^^^^^^^^^^^
-
-        New to NumPy? Check out the Absolute Beginner's Guide. It contains an
-        introduction to NumPy's main concepts and links to additional tutorials.
-
-        +++
-
-        .. button-link:: https://github.com/dsagolla/nssvie
-            :expand:
-            :color: secondary
-            :click-parent:
-
-            To the absolute beginner's guide
+        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/api.svg
 
     .. grid-item-card::
-        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/index-images/user_guide.svg
+        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/api.svg
 
-        User Guide
-        ^^^^^^^^^^
+	.. grid-item-card::
+		:img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/api.svg
 
-        The user guide provides in-depth information on the
-        key concepts of NumPy with useful background information and explanation.
-
-        +++
-
-        .. button-link:: https://pypi.org/project/nssvie/
-            :expand:
-            :color: secondary
-            :click-parent:
-
-            To the user guide
-
-    .. grid-item-card::
-        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/index-images/api.svg
-
-        API Reference
-        ^^^^^^^^^^^^^
-
-        The reference guide contains a detailed description of the functions,
-        modules, and objects included in NumPy. The reference describes how the
-        methods work and which parameters can be used. It assumes that you have an
-        understanding of the key concepts.
-
-        +++
-
-        .. button-ref:: theory/index
-            :expand:
-            :color: secondary
-            :click-parent:
-
-            To the reference guide
-
-    .. grid-item-card::
-        :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/index-images/contributor.svg
-
-        Contributor's Guide
-        ^^^^^^^^^^^^^^^^^^^
-
-        Want to add to the codebase? Can help add translation or a flowchart to the
-        documentation? The contributing guidelines will guide you through the
-        process of improving NumPy.
-
-        +++
-
-        .. button-ref:: reference/api
-            :expand:
-            :color: secondary
-            :click-parent:
-
-            To the contributor's guide
 
 Overview
 --------
