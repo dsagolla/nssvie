@@ -2,13 +2,22 @@
     --pst-font-size-base: 10pt;
 }
 
+.bd-content {
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.bd-page-width{
+  max-width: 1400px;
+}
+
 /* Make each footer item in-line so they stack horizontally instead of vertically */
 .footer-item {
     display: inline-block;
     float: right;
     text-align: right;
   }
-  
+
   /* Add a separating border line for all but the last item */
   .footer-item:not(:first-child) {
     border-right: 1px solid var(--pst-color-text-base);

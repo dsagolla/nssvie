@@ -95,7 +95,12 @@ html_theme_options = {
     "footer_items": ["sphinx-version", "copyright"],
 }
 
-html_sidebars = {"**": ["search-field", "sidebar-nav-bs.html", "sidebar-ethical-ads"]}
+html_sidebars = {
+    "**": [
+        "search-field",
+        "sidebar-nav-bs.html",
+        "sidebar-ethical-ads"]
+}
 templates_path = ["_templates"]
 html_static_path = ["_static"]
 html_css_files = [

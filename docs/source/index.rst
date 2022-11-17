@@ -43,7 +43,7 @@ integral equations.
         :text-align: center
         :link: theory/index
         :link-type: any
-
+		
     .. grid-item-card:: API Reference
         :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/magnifying-glass-solid.svg
         :text-align: center
