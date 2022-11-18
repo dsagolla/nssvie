@@ -1,12 +1,7 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# For the full list of built-in configuration values, see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
 from datetime import date
 
 needs_sphinx = "4.3"
-# -- Project information -----------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+# -- Project information -----------------------------------------------
 
 project = "nssvie"
 author = "Daniel Sagolla"
@@ -14,15 +9,13 @@ copyright = f"{date.today().year}, " + author
 version = "0.0.1"
 release = "0.0.1"
 
-# -- General configuration ---------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+# -- General configuration ---------------------------------------------
 
 extensions = [
     "sphinx.ext.autodoc",
     "numpydoc",
     "sphinx.ext.autosummary",
     "sphinx.ext.intersphinx",
-    "sphinx_math_dollar",
     "sphinx_copybutton",
     "sphinx.ext.graphviz",
     "sphinx.ext.viewcode",
@@ -30,17 +23,14 @@ extensions = [
     "sphinx_design",
 ]
 
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3", None),
+    "numpy": ("https://numpy.org/doc/stable/", None),
+    "scipy": ("https://docs.scipy.org/doc/scipy/", None),
+}
+
 # Automatically generate autosummary after each build
 autosummary_generate = True
-
-# Added after including sphinx_math_dollar. The following prevents msthjax to
-# parse $ and $$.
-mathjax3_config = {
-    "tex2jax": {
-        "inlineMath": [["\\(", "\\)"]],
-        "displayMath": [["\\[", "\\]"]],
-    },
-}
 
 add_function_parentheses = False
 
@@ -95,7 +85,12 @@ html_theme_options = {
     "footer_items": ["sphinx-version", "copyright"],
 }
 
-html_sidebars = {"**": ["search-field", "sidebar-nav-bs.html", "sidebar-ethical-ads"]}
+html_sidebars = {
+    "**": [
+        "search-field",
+        "sidebar-nav-bs.html",
+        "sidebar-ethical-ads"]
+}
 templates_path = ["_templates"]
 html_static_path = ["_static"]
 html_css_files = [
@@ -105,9 +100,3 @@ html_css_files = [
 html_title = f"{project} Manual"
 html_last_updated_fmt = "%b %d, %Y"
 html_context = {"default_mode": "light"}
-
-intersphinx_mapping = {
-    "python": ("https://docs.python.org/3", None),
-    "numpy": ("https://numpy.org/doc/stable/", None),
-    "scipy": ("https://docs.scipy.org/doc/scipy/", None),
-}

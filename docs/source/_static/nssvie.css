@@ -1,5 +1,14 @@
 :root {
-    --pst-font-size-base: 10pt;
+    --pst-font-size-base: 12pt;
+}
+
+.bd-content {
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.bd-page-width{
+  max-width: 1400px;
 }
 
 /* Make each footer item in-line so they stack horizontally instead of vertically */
@@ -8,7 +17,7 @@
     float: right;
     text-align: right;
   }
-  
+
   /* Add a separating border line for all but the last item */
   .footer-item:not(:first-child) {
     border-right: 1px solid var(--pst-color-text-base);
@@ -18,7 +27,7 @@
 
   pre, code {
     font-size: 100%;
-    line-height: 155%;
+    line-height: 150%;
   }
 
   /* Main page overview cards */

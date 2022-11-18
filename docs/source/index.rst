@@ -12,17 +12,6 @@ nssvie
 
 |build| |docs| |pypi| |pyversions| |licence|
 
-.. |stochastic-volterra-integral-equation| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/stochastic-volterra-integral-equation.svg
-.. |X-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/X-t.svg
-.. |f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/f.svg
-.. |k-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/k-1-k-2.svg
-.. |B-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/B-t.svg
-.. |ito-integral| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/ito-integral.svg
-.. |example-1-eq| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-eq.svg	
-.. |example-1-f| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-f.svg
-.. |example-1-k-1| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-1.svg
-.. |example-1-k-2| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/images/example-1-k-2.svg
-
 A python package for computing a numerical solution of stochastic Volterra 
 integral equations.
 
@@ -43,7 +32,7 @@ integral equations.
         :text-align: center
         :link: theory/index
         :link-type: any
-
+		
     .. grid-item-card:: API Reference
         :img-top: https://raw.githubusercontent.com/dsagolla/nssvie/main/docs/source/_static/card-icons/magnifying-glass-solid.svg
         :text-align: center
@@ -57,15 +46,19 @@ Overview
 A python package for computing a numerical solution of stochastic Volterra 
 integral equations of the second kind
 
-|stochastic-volterra-integral-equation|
+.. math::
+	:label: svie_index
 
-where
+	X_t = f(t) + \int\limits_0^t k_1(s,t) X_s \ ds
+        + \int\limits_0^t k_2(s,t) X_s \ dB_s \qquad t \in [0,T),
 
-+ |X-t| is an unknown process,
-+ |f| is a continuous function,
-+ |k-1-k-2| are continuous and square integrable functions,
-+ |B-t| is the Brownian Motion and
-+ |ito-integral| is the Itô-integral
+where 
+
++ :math:`X_t` is an unknown process,
++ :math:`f \in L^2([0,T))` is a continuous function,
++ :math:`k_1, \ k_2 \in L^2([0,T) \times [0,T))` are continuous and square integrable functions,
++ :math:`B_t` is the Brownian motion (see `Wiener process <https://en.wikipedia.org/wiki/Wiener_process>`_) and
++ :math:`\int_0^t k_2(s,t) X_s dB_s` is the Itô-integral (see `Itô calculus <https://en.wikipedia.org/wiki/It%C3%B4_calculus>`_)
 
 by a stochastic operational matrix based on block
 pulse functions as suggested in `Maleknejad et. al (2012) 
@@ -82,7 +75,8 @@ Install using either of the following two methods.
 
 |pypi| |pyversions| |format| 
 
-The ``nssvie`` package is available on `PyPi <https://pypi.org/project/nssvie/>`_ and can be installed using ``pip``
+The ``nssvie`` package is available on
+`PyPi <https://pypi.org/project/nssvie/>`_ and can be installed using ``pip``
 
 .. code-block:: bash
 
@@ -107,22 +101,22 @@ Dependencies
 
 ``nssvie`` uses 
 
-+ `NumPy <https://numpy.org/>`_  for many calculations, 
++ `NumPy <https://numpy.org/>`_  for many calculations,
 + `SciPy <https://scipy.org>`_ for computing the block pulse coefficients and
-+ `stochastic <https://pypi.org/project/stochastic/>`_ for sampling the Brownian Motion
++ `stochastic <https://stochastic.readthedocs.io/en/latest/>`_ for sampling the Brownian Motion
 
 Usage 
 -----
 
 Consider the following example of a stochastic Volterra integral equation
 
-|example-1-eq|,
+.. math:: 
 
-so 
+	X_t = 1 + \int\limits_0^t s^2 X_s \ ds
+        + \int\limits_0^t s X_s \ dB_s \qquad t \in [0,T),
 
-+ |example-1-f| ,   
-+ |example-1-k-1| and   
-+ |example-1-k-2|.
+so :math:`f \equiv 1`, :math:`k_1(s,t) = s^2` and :math:`k_2(s,t) = s` in
+:eq:`svie_index`.
 
 .. code-block:: python
 
@@ -141,22 +135,22 @@ so
 	
 	# Generate the stochastic Volterra integral equation
 	svie = StochasticVolterraIntegralEquations(
-		func=f, k1=k1, k2=k2, interval_end=0.5
+		f=f, kernel_1=k1, kernel_2=k2, T=0.5
 	)
 
-	# Calculate numerical solution with m=100 intervals  
-	svie_solution = svie.solve_method(prec=100, solve_method="bpf")
+	# Calculate numerical solution with m=50 intervals  
+	svie_solution = svie.solve_method(m=50, solve_method="bpf")
 
 
 The parameters are
 
-+ ``func``: the function :math:`f`.
-+ ``k1``, ``k2``: the kernels :math:`k_1` and :math:`k_2`.
-+ ``interval_end``: the right hand side of :math:`[0,T)`. Default is ``1.0``.
-+ ``prec``: the number of intervals to divide :math:`[0,T)`. Default is ``50``.
++ ``f``: the function :math:`f`.
++ ``kernel_1``, ``kernel_2``: the kernels :math:`k_1` and :math:`k_2`.
++ ``T``: the right hand side of :math:`[0,T)`. Default is ``1.0``.
++ ``m``: the number of intervals to divide :math:`[0,T)`. Default is ``50``.
 + ``solve_method``: the choosen method based on orthogonal functions. Default is ``bpf``. 
 
-for the stochastic Volterra integral equation above.
+for the stochastic Volterra integral equation in :eq:`svie_index`.
 
 Citation
 --------
