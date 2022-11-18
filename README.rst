@@ -24,17 +24,17 @@ where
 + |X-t| is an unknown process,
 + |f| is a continuous function,
 + |k-1-k-2| are continuous and square integrable functions,
-+ |B-t| is the Brownian Motion and
-+ |ito-integral| is the Itô-integral
++ |B-t| is the Brownian motion (see `Wiener process <https://en.wikipedia.org/wiki/Wiener_process>`_) and
++ |ito-integral| is the Itô-integral (see `Itô calculus <https://en.wikipedia.org/wiki/It%C3%B4_calculus>`_)
 
 by a stochastic operational matrix based on block
 pulse functions as suggested in `Maleknejad et. al (2012) 
 <https://www.sciencedirect.com/science/article/pii/S0895717711005504/>`_ [1]_.
 
-+ `Documentation <https://nssvie.readthedocs.io/en/latest>`_
-+ `API Reference <https://nssvie.readthedocs.io/en/latest/api.html>`_
-+ `Source Code <https://github.com/dsagolla/nssvie>`_
-+ `Bug reports <https://github.com/dsagolla/nssvie/issues>`_
++ Documentation: https://nssvie.readthedocs.io/en/latest
++ API Reference: https://nssvie.readthedocs.io/en/latest/api.html
++ Source Code: https://github.com/dsagolla/nssvie
++ Bug reports: https://github.com/dsagolla/nssvie/issues
 
 ``nssvie`` is distributed under the terms of the `GNU GPLv3 <https://www.gnu.org/licenses/gpl-3.0.en.html>`_ license.
 
@@ -73,8 +73,8 @@ Dependencies
 
 ``nssvie`` uses 
 
-+ `numpy <https://numpy.org/>`_  for many calculations, 
-+ `scipy <https://scipy.org>`_ for computing the block pulse coefficients and
++ `NumPy <https://numpy.org/>`_  for many calculations, 
++ `SciPy <https://scipy.org>`_ for computing the block pulse coefficients and
 + `stochastic <https://pypi.org/project/stochastic/>`_ for sampling the Brownian Motion
 
 Usage 
@@ -116,10 +116,10 @@ so
 
 The parameters are
 
-+ ``func``: the function :math:`f`.
-+ ``k1``, ``k2``: the kernels :math:`k_1` and :math:`k_2`.
++ ``func``: the function |f|
++ ``k1``, ``k2``: the kernels :math:|k-1-k-2|
 + ``interval_end``: the right hand side of :math:`[0,T)`. Default is ``1.0``.
-+ ``prec``: the number of intervals to divide :math:`[0,T)`. Default is ``50``.
++ ``m``: the number of intervals to divide :math:`[0,T)`. Default is ``50``.
 + ``solve_method``: the choosen method based on orthogonal functions. Default is ``bpf``. 
 
 for the stochastic Volterra integral equation above.

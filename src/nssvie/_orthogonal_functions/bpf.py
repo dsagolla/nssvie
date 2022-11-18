@@ -19,7 +19,7 @@ class BlockPulseFunctions:
         interval_end : float, default=1.0
             The right hand side of the interval :math:`[0,T)`
         m : int, default=50
-            The number of intervals to divie :math:`[0,T)`
+            The number of intervals to divide :math:`[0,T)`
 
     Attributes
     ----------
@@ -28,29 +28,25 @@ class BlockPulseFunctions:
             The width of one of the ``m`` intervals.
     """
 
-    # ----
-    # Init
-    # ----
-    def __init__(self, interval_end=1.0, refineness=50):
-        self.refineness = refineness
+    def __init__(self, interval_end=1.0, m=50):
+        self.m = m
         self.interval_end = float(interval_end)
-        self.bandwidth = float(interval_end / refineness)
+        self.bandwidth = float(interval_end / m)
 
     def __str__(self):
         str_name = (
-            f"{self.refineness}-Set of block pulse functions on "
-            "the interval [0, {self.bandwidth})"
+            f"{self.m}-Set of block pulse functions on "
+            "the interval [0, {self.interval_end})"
         )
         return str_name
 
     def __repr__(self):
-        repr_string = (
-            f"BlockPulseFunctions(m={self.refineness}, " f"[0, {self.bandwidth}))"
-        )
+        repr_string = f"BlockPulseFunctions(m={self.m}, " + f"[0, {self.m}))"
         return repr_string
 
     def _bpf_i(self, i, t_value) -> float:
-        """Calculate block pulse function at given value.
+        """
+        Calculates block pulse no. ``i`` function at given value.
         phi_i(t) = 1 if and only if (i-1)*h <= t < i*h
         phi_i(t) = 0 otherwise
 
@@ -86,7 +82,7 @@ class BlockPulseFunctions:
         list[float]
             Values of the block pulse functions at time ``t`` as a vector.
         """
-        return [self._bpf_i(i, t_value) for i in range(1, self.refineness + 1)]
+        return [self._bpf_i(i, t_value) for i in range(1, self.m + 1)]
 
     def _coeff_i(self, i, func) -> float:
         """Using :external:func:`scipy.integrate.quad`.
@@ -119,9 +115,7 @@ class BlockPulseFunctions:
             The block pulse function coefficient vector for the function
             ``func``.
         """
-        return array(
-            [self._coeff_i(i, func) for i in range(1, self.refineness + 1)]
-            ).T
+        return array([self._coeff_i(i, func) for i in range(1, self.m + 1)]).T
 
     def _coeff_ij(self, i, j, func) -> float:
         """
@@ -167,9 +161,9 @@ class BlockPulseFunctions:
             [
                 [
                     self._coeff_ij(i, j, func_var_switched)
-                    for j in range(1, self.refineness + 1)
+                    for j in range(1, self.m + 1)
                 ]
-                for i in range(1, self.refineness + 1)
+                for i in range(1, self.m + 1)
             ]
         )
         return self.bandwidth ** (-2) * coeff_matrix
@@ -185,7 +179,7 @@ class BlockPulseFunctions:
         diagonal = eye(self.refineness)
 
         # Contruct the upper triangular part
-        upper_triu = triu(2 * ones((self.refineness, self.refineness)), k=1)
+        upper_triu = triu(2 * ones((self.m, self.m)), k=1)
 
         return self.bandwidth * 0.5 * (diagonal + upper_triu)
 
@@ -200,17 +194,15 @@ class BlockPulseFunctions:
 
         # Generate a sample from the Brownian Motion
         brownian_motion_sample = brownian_motion.sample_at(
-            [0.5 * self.bandwidth * i for i in range(2 * self.refineness + 1)]
+            [0.5 * self.bandwidth * i for i in range(2 * self.m + 1)]
         )
 
         # Construct the upper triangulart part
         const_column = [
             brownian_motion_sample[2 * i] - brownian_motion_sample[2 * (i - 1)]
-            for i in range(1, self.refineness + 1)
+            for i in range(1, self.m + 1)
         ]
-        triu_matrix = full(
-            (self.refineness, self.refineness), transpose([const_column])
-        )
+        triu_matrix = full((self.m, self.m), transpose([const_column]))
 
         # Construct the diagonal part
         diagonal = [
