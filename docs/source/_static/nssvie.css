@@ -1,5 +1,5 @@
 :root {
-    --pst-font-size-base: 10pt;
+    --pst-font-size-base: 12pt;
 }
 
 .bd-content {
@@ -27,7 +27,7 @@
 
   pre, code {
     font-size: 100%;
-    line-height: 155%;
+    line-height: 150%;
   }
 
   /* Main page overview cards */
