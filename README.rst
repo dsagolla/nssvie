@@ -31,10 +31,10 @@ by a stochastic operational matrix based on block
 pulse functions as suggested in `Maleknejad et. al (2012) 
 <https://www.sciencedirect.com/science/article/pii/S0895717711005504/>`_ [1]_.
 
-+ Documentation: https://nssvie.readthedocs.io/en/latest
-+ API Reference: https://nssvie.readthedocs.io/en/latest/api.html
-+ Source Code: https://github.com/dsagolla/nssvie
-+ Bug reports: https://github.com/dsagolla/nssvie/issues
++ `Documentation <https://nssvie.readthedocs.io/en/latest>`_
++ `API Reference <https://nssvie.readthedocs.io/en/latest/api.html>`_
++ `Source Code <https://github.com/dsagolla/nssvie>`_
++ `Bug reports <https://github.com/dsagolla/nssvie/issues>`_
 
 ``nssvie`` is distributed under the terms of the `GNU GPLv3 <https://www.gnu.org/licenses/gpl-3.0.en.html>`_ license.
 
