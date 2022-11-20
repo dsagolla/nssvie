@@ -17,11 +17,7 @@ nssvie
 A python package for computing a numerical solution of stochastic Volterra 
 integral equations of the second kind
 
-.. math::
-	:label: svie_index
-
-	X_t = f(t) + \int\limits_0^t k_1(s,t) X_s \ ds
-        + \int\limits_0^t k_2(s,t) X_s \ dB_s \qquad t \in [0,T),
+|stochastic-volterra-integral-equation|
 
 where
 
