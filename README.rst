@@ -17,7 +17,11 @@ nssvie
 A python package for computing a numerical solution of stochastic Volterra 
 integral equations of the second kind
 
-|stochastic-volterra-integral-equation|
+.. math::
+	:label: svie_index
+
+	X_t = f(t) + \int\limits_0^t k_1(s,t) X_s \ ds
+        + \int\limits_0^t k_2(s,t) X_s \ dB_s \qquad t \in [0,T),
 
 where
 
@@ -107,18 +111,18 @@ so
 		
 		>>> # Generate the stochastic Volterra integral equation
 		>>> svie = StochasticVolterraIntegralEquations(
-		>>> 	func=f, k1=k1, k2=k2, interval_end=0.5
+		>>> 	f=f, kernel_2=k1, kernel_1=k2, T=0.5
 		>>> )
 		
-		>>> # Calculate numerical solution with m=100 intervals  
-		>>> svie_solution = svie.solve_method(prec=100, solve_method="bpf")
+		>>> # Calculate numerical solution with m=20 intervals  
+		>>> svie_solution = svie.solve_method(m=20, solve_method="bpf")
 
 
 The parameters are
 
-+ ``func``: the function |f|
-+ ``k1``, ``k2``: the kernels :math:|k-1-k-2|
-+ ``interval_end``: the right hand side of :math:`[0,T)`. Default is ``1.0``.
++ ``f``: the function |f|.
++ ``kernel_1``, ``kernel_2``: the kernels :math:|k-1-k-2|.
++ ``T``: the right hand side of :math:`[0,T)`. Default is ``1.0``.
 + ``m``: the number of intervals to divide :math:`[0,T)`. Default is ``50``.
 + ``solve_method``: the choosen method based on orthogonal functions. Default is ``bpf``. 
 

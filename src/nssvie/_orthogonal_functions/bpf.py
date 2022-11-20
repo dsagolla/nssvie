@@ -1,6 +1,8 @@
 """Block Pulse Functions.
 
-Submodule containing the class BlockPulseFunctions.
+Classes
+-------
+BlockPulseFunction
 """
 from numpy import array, eye, triu, ones, full, transpose, diagflat, multiply
 
@@ -11,217 +13,288 @@ from stochastic.processes import BrownianMotion
 
 class BlockPulseFunctions:
     """
-    Generates a ``m``-set of block pulse functions.
+    Generate a :math:`m`-set of block pulse functions.
 
     Parameters
     ----------
-
-        interval_end : float, default=1.0
-            The right hand side of the interval :math:`[0,T)`
-        m : int, default=50
-            The number of intervals to divide :math:`[0,T)`
+    T : float, default 1.0
+        The right hand side of the interval :math:`[0,T)`
+    m : int, default 50
+        The number of equidistant intervals to divide :math:`[0,T)`
 
     Attributes
     ----------
-
-        bandwidth : float, default=1/50
-            The width of one of the ``m`` intervals.
+    h : float
+        The width of one of the :math:`m` intervals.
     """
 
-    def __init__(self, interval_end=1.0, m=50):
+    def __init__(self, T=1.0, m=20):
         self.m = m
-        self.interval_end = float(interval_end)
-        self.bandwidth = float(interval_end / m)
+        self.T = float(T)
+        self.h = float(T / m)
 
     def __str__(self):
         str_name = (
-            f"{self.m}-Set of block pulse functions on "
-            "the interval [0, {self.interval_end})"
+            f"{self.m}-Set of block pulse functions on [0, {self.T})"
         )
         return str_name
 
     def __repr__(self):
-        repr_string = f"BlockPulseFunctions(m={self.m}, " + f"[0, {self.m}))"
+        repr_string = f"BlockPulseFunctions(m={self.m}, [0, {self.T}))"
         return repr_string
 
-    def _bpf_i(self, i, t_value) -> float:
-        """
-        Calculates block pulse no. ``i`` function at given value.
-        phi_i(t) = 1 if and only if (i-1)*h <= t < i*h
-        phi_i(t) = 0 otherwise
+    def _bpf_i(self, i, t):
+        """Calculates the value of a block pulse function at :math:`t`.
+
+        .. math::
+
+            \\phi_i(t) = \\begin{cases} 1 & , \\ (i-1)h \\leq t < ih \\\\
+                0 & , \\text{ otherwise.} \\end{cases}.
 
         Parameters
         ----------
-            i: int
-                The number of the block pulse function.
-            t_value: float
-                The value for which the block pulse function should be
-                evaluated.
+        i: int
+            Block pulse function no. :math:`i`.
+        t: float
+            The value :math:`t`.
 
         Returns
         -------
         float
-            Value of the ``i``-th block pulse function at time
-            ``t_value``.
+            :math:`\\phi_i(t)``
         """
-        if (i - 1) * self.bandwidth <= t_value < i * self.bandwidth:
-            return float(1)
+        if (i - 1) * self.h <= t < i * self.h:
+            return 1.0
         else:
-            return float(0)
+            return 0.0
 
-    def _bpf_vector(self, t_value) -> list[float]:
-        """
-        phi(t) = (phi_1(t), ... , phi_m(t))
+    def _bpf_vector(self, t):
+        """Calculates the value of the :math:`m`-set of block pulse
+        functions at :math:`t`.
 
-        Parameters:
-        -----------
+        .. math::
+
+            \\phi(t) = (\\phi_1(t), \\ldots , \\phi_m(t))
+
+        Parameters
+        ----------
         t: float
+            The value :math:`t`.
 
-        Returns:
-        --------
-        list[float]
-            Values of the block pulse functions at time ``t`` as a vector.
+        Returns
+        -------
+        :class:`numpy.ndarray`
+            :math:`\\phi(t)`
         """
-        return [self._bpf_i(i, t_value) for i in range(1, self.m + 1)]
+        return array([self._bpf_i(i, t) for i in range(1, self.m + 1)])
 
-    def _coeff_i(self, i, func) -> float:
-        """Using :external:func:`scipy.integrate.quad`.
+    def _coeff_i(self, i, f):
+        """Calculates the block pulse coefficient.
 
-        Parameters:
-        -----------
+        .. math::
+
+            f_i = \\frac{1}{h} \\int\\limits_0^T f(t) \\phi_i(t) dt
+
+        For calculation of the definite integral
+        :external:func:`scipy.integrate.quad` is used.
+
+        Parameters
+        ----------
         i: int
-        func: callable
+            Block pulse coefficient no. :math:`i`.
+        f: callable
+            The function :math:`f`.
 
-        Returns:
-        --------
+        Returns
+        -------
         float
-            The ``i``-th block pulse function coefficient for the function
-            ``func``.
+            The block pulse function coefficient :math:`f_i` for the
+            function :math:`f`.
         """
         return float(
-            (1 / self.bandwidth)
-            * quad(func, (i - 1) * self.bandwidth, i * self.bandwidth)[0]
+            (1 / self.h)
+            * quad(
+                f,
+                (i-1) * self.h,
+                i * self.h)[0]
         )
 
-    def _coefficient_vector(self, func) -> array:
-        """
-        Parameters:
-        -----------
-        func: callable
+    def _coefficient_vector(self, f):
+        """Calculates the block pulse coefficient vector.
 
-        Returns:
-        --------
-        np.array
-            The block pulse function coefficient vector for the function
-            ``func``.
-        """
-        return array([self._coeff_i(i, func) for i in range(1, self.m + 1)]).T
+        .. math::
 
-    def _coeff_ij(self, i, j, func) -> float:
-        """
-        Using :external:func:`scipy.integrate.dblquad`.
+            F = (f_1 , \\ldots, f_m)
 
-        Parameters:
-        -----------
+        Parameters
+        ----------
+        f: callable
+            The function :math:`f`.
+
+        Returns
+        -------
+        :class:`numpy.ndarray`
+            The block pulse function coefficient vector :math:`F` for
+            the function :math:`f`.
+        """
+        return array([self._coeff_i(i, f) for i in range(1, self.m + 1)]).T
+
+    def _coeff_ij(self, i, j, f):
+        """Calculate the block pulse coefficient.
+
+        .. math::
+
+            k_{ij} = \\frac{1}{h^2} \\int\\limits_0^T \\int\\limits_0^T
+                k(s,t) \\phi_i(s) \\phi_j(t) dt ds
+
+        For calculation of the definite integral
+        :external:func:`scipy.integrate.dblquad` is used.
+
+        Parameters
+        ----------
         i,j: int
-        func: callable
+            Block pulse coefficient no. :math:`i,j`.
+        f: callable
+            The function :math:`f`.
 
-        Returns:
-        --------
+        Returns
+        -------
         float
-            Block pulse coefficient of the function ``k`` with respect
-            to the ``i``-th and ``j``-th block pulse function.
+            Block pulse coefficient :math:`k_{ij`.
         """
         return dblquad(
-            func,
-            (i - 1) * self.bandwidth,
-            i * self.bandwidth,
-            (j - 1) * self.bandwidth,
-            j * self.bandwidth,
+            f,
+            (i-1) * self.h,
+            i * self.h,
+            (j-1) * self.h,
+            j * self.h,
         )[0]
 
-    def _coefficient_matrix(self, func) -> array:
-        """
-        Parameters:
-        -----------
-        func:  callable
+    def _coefficient_matrix(self, k):
+        """Calculate the block pulse coefficient matrix.
 
-        Returns:
-        --------
-        np.ndarray
-            Block pulse coefficient matrix of the function ``func``.
+        .. math::
+
+            K = (k_{ij})_{i,j = 1 , \\ldots , m}
+
+        Parameters
+        ----------
+        k:  callable
+            The function :math:`k`.
+
+        Returns
+        -------
+        :class:`numpy.ndarray`
+            Block pulse coefficient matrix :math:`K`.
         """
 
-        # Switch variables, see documentation for
-        # :func:`scipy.integrate.dblquad`
-        def func_var_switched(second_var, first_var):
-            return func(first_var, second_var)
+        # Switch variables, see `scipy.integrate.dblquad`
+        def k_var_switched(second_var, first_var):
+            return k(first_var, second_var)
 
         coeff_matrix = array(
             [
                 [
-                    self._coeff_ij(i, j, func_var_switched)
+                    self._coeff_ij(i, j, k_var_switched)
                     for j in range(1, self.m + 1)
                 ]
                 for i in range(1, self.m + 1)
             ]
         )
-        return self.bandwidth ** (-2) * coeff_matrix
+        return self.h ** (-2) * coeff_matrix
 
-    def _operational_matrix_of_integration(self) -> array:
-        """
-        Returns:
-        --------
-        np.ndarray
-            Operational matrix of integration.
+    def _operational_matrix_of_integration(self):
+        """Calculates the operational matrix of integration.
+
+        .. math::
+
+            P = \\frac{h}{2} \\begin{pmatrix} 1 & 2 & 2 & \\ldots & 2
+                \\\\ 0 & 1 & 2 & \\ldots & 2 \\\\ 0 & 0 & 1 & \\ldots &
+                2 \\\\ \\vdots & \\vdots & \\vdots & \\ddots & \\vdots
+                \\\\ 0 & 0 & 0 & \\ldots & 1 \\end{pmatrix}
+
+        Returns
+        -------
+        :class:`numpy.ndarray`
+            Operational matrix of integration :math:`P`.
+
+        Notes
+        -----
+        For detail see `Maleknejad et. al (2012)
+        <https://www.sciencedirect.com/science/article/pii/
+        S0895717711005504/>`_
         """
         # Construct the diagonal part
-        diagonal = eye(self.refineness)
+        diagonal = eye(self.m)
 
         # Contruct the upper triangular part
         upper_triu = triu(2 * ones((self.m, self.m)), k=1)
 
-        return self.bandwidth * 0.5 * (diagonal + upper_triu)
+        return self.h * 0.5 * (diagonal + upper_triu)
 
-    def _stochastic_operational_matrix_of_integration(self) -> array:
+    def _stochastic_operational_matrix_of_integration(self):
+        """Calculates the stochastic operational matrix of integration.
+
+        .. math::
+
+            P = \\frac{h}{2} \\begin{pmatrix} B_{0.5h} & B_h & B_h &
+                \\ldots & B_h \\\\ 0 & B_{1.5h} - B_h & B_{2h} - B_h &
+                \\ldots & B_{2h} - B_h \\\\ 0 & 0 & B_{2.5h} - B_{2h} &
+                \\ldots & B_{2h} - B_{2h} \\\\ \\vdots & \\vdots &
+                \\vdots & \\ddots & \\vdots \\\\ 0 & 0 & 0 & \\ldots &
+                B_{(m-0.5)h} - B_{(m-1)h} \\end{pmatrix}
+
+        where :math:`B_t` is the Brownian motion. For sampling the
+        Brownian motion
+        :class:`stochastic.processes.continuous.BrownianMotion` is used.
+
+        Returns
+        -------
+        :class:`numpy.ndarray`
+            Stochastical operational matrix of integration :math:`P_S`.
+
+        Notes
+        -----
+        For detail see `Maleknejad et. al (2012)
+        <https://www.sciencedirect.com/science/article/pii/
+        S0895717711005504/>`_
         """
-        Returns:
-        --------
-        np.ndarray
-            Stochastical operational matrix of integration.
-        """
-        brownian_motion = BrownianMotion(drift=0, scale=1, t=self.bandwidth)
+        bb = BrownianMotion(drift=0, scale=1, t=self.T)
 
         # Generate a sample from the Brownian Motion
-        brownian_motion_sample = brownian_motion.sample_at(
-            [0.5 * self.bandwidth * i for i in range(2 * self.m + 1)]
+        bb_sample = bb.sample_at(
+            [0.5 * self.h * i for i in range(2 * self.m + 1)]
         )
 
-        # Construct the upper triangulart part
+        # Construct the upper triangular part
         const_column = [
-            brownian_motion_sample[2 * i] - brownian_motion_sample[2 * (i - 1)]
+            bb_sample[2 * i] - bb_sample[2 * (i - 1)]
             for i in range(1, self.m + 1)
         ]
         triu_matrix = full((self.m, self.m), transpose([const_column]))
 
         # Construct the diagonal part
         diagonal = [
-            (brownian_motion_sample[i] - brownian_motion_sample[i - 1])
+            (bb_sample[i] - bb_sample[i - 1])
             for i in range(1, 2 * self.refineness + 1, 2)
         ]
         diag_matrix = diagflat(diagonal)
 
         return diag_matrix + triu(triu_matrix, k=1)
 
-    def _matrix_b1(self, kernel_1) -> array:
-        """
-        Parameters:
-        -----------
+    def matrix_b1(self, kernel_1):
+        """Generates the matrix :math:`B_1`from the article
+        `Maleknejad et. al (2012)
+        <https://www.sciencedirect.com/science/article/pii/
+        S0895717711005504/>`_.
+
+        Parameters
+        ----------
         kernel_1: callable
 
-        Returns:
-        --------
-        np.ndarray
+        Returns
+        -------
+        :class:`numpy.ndarray`
             Matrix ``B_1``.
         """
         return multiply(
@@ -229,15 +302,19 @@ class BlockPulseFunctions:
             self._coefficient_matrix(kernel_1),
         )
 
-    def _matrix_b2(self, kernel_2) -> array:
-        """
-        Parameter:
-        ----------
+    def matrix_b2(self, kernel_2):
+        """Generates the matrix :math:`B_2`from the article
+        `Maleknejad et. al (2012)
+        <https://www.sciencedirect.com/science/article/pii/
+        S0895717711005504/>`_.
+
+        Parameter
+        ---------
         kernel_2: callable
 
-        Returns:
-        --------
-        np.ndarray
+        Returns
+        -------
+        :class:`numpy.ndarray`
             Matrix ``B_2``.
         """
         return multiply(

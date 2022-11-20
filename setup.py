@@ -21,7 +21,7 @@ tracker_url = url + "/issues"
 # Setup
 setuptools.setup(
     name="nssvie",
-    version="0.0.1",
+    version="0.1.0",
     author="Daniel Sagolla",
     author_email="daniel.sagolla@udo.edu",
     description=r"Numerical solution of stochastic Volterra integral " +
@@ -53,7 +53,7 @@ setuptools.setup(
         'pytest-runner'],
     tests_require=[
         'pytest',
-        'pytest-cov'],
+    ],
     include_package_data=True,
     zip_safe=False,
     extras_require={

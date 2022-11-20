@@ -1,8 +1,8 @@
-"""_summary_
-Returns
+"""Stochastic Volterra integral equation.
+
+Classes
 -------
-_type_
-    _description_
+SVIE
 """
 from numpy import eye
 
@@ -16,8 +16,7 @@ class SVIE:
     Generate a stochastic Volterra integral equation
 
     .. math::
-        :label: svie
-
+        :label: svie_doc
 
         X_t = f(t) + \\int\\limits_0^t k_1(s,t) X_s \\ ds
         + \\int\\limits_0^t k_2(s,t) X_s \\ dB_s \\qquad t \\in [0,T),
@@ -26,7 +25,6 @@ class SVIE:
     Brownian motion,
 
     .. math::
-        :label: ito-int
 
         \\int\\limits_0^t k_2(s,t) X_s \\ dB_s
 
@@ -35,10 +33,10 @@ class SVIE:
 
     Parameters
     ----------
-    func : callable
-        Function :math:`f` in :eq:`svie`
+    f : callable
+        Function :math:`f` in :eq:`svie_doc`.
     kernel_1, kernel_2 : callable
-        The kernels :math:`k_1` and :math:`k_2` in :eq:`svie`
+        The kernels :math:`k_1` and :math:`k_2` in :eq:`svie_doc`.
     T : float, default 1.0
         The right hand side of the interval :math:`[0,T)`.
 
@@ -52,17 +50,17 @@ class SVIE:
         self.kernel_2 = kernel_2
         self.T = float(T)
 
-    def solve_numerical(self, m=50, solve_method="bpf"):
+    def solve_numerical(self, m=20, solve_method='bpf'):
         """
-        Compute a numerical solution of the given stochastic Volterra
+        Compute a numerical solution for the given stochastic Volterra
         integral equation.
 
         Parameters
         ----------
-        m : int, default 50
-            The number of intervals
-        solve_method : str, default bpf
-            If ``solve_methods="bpf"`` an algorithm presented in
+        m : int, default 20
+            The number of equidistant intervals to divide :math:`[0,T)`.
+        solve_method : str, default 'bpf'
+            If ``solve_methods='bpf'`` an algorithm presented in
             `Maleknejad et. al (2012)
             <https://www.sciencedirect.com/science/
             article/pii/S0895717711005504/>`_ is used which relies on an
@@ -75,17 +73,17 @@ class SVIE:
             The approximate block pulse function coefficient of the
             unknown stochastic process :math:`X_t`.
         """
-        if solve_method == "bpf":
+        if solve_method == 'bpf':
             # Approximate with an operational matrix of integration
             # based on block pulse functions as suggested in
             # Maleknejad et. al (2012).
-            bpf = BlockPulseFunctions(m, self.interval_end)
-            matrix_m = (
+            bpf = BlockPulseFunctions(m, self.T)
+            M = (
                 eye(m)
-                - bpf._matrix_b1(self.kernel_1)
-                - bpf._matrix_b2(self.kernel_2)
+                - bpf.matrix_b1(self.kernel_1)
+                - bpf.matrix_b2(self.kernel_2)
             )
-            return solve(matrix_m.T, bpf._coefficient_vector(self.func))
+            return solve(M.T, bpf._coefficient_vector(self.f))
 
 
 # Maybe add other methods to solve the given stochastic Volterra
