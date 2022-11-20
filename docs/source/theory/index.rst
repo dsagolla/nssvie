@@ -7,8 +7,7 @@ Introduction
 Basics
 ------
 
-Block pulse functions
-~~~~~~~~~~~~~~~~~~~~~
+.. include:: bpf.rst
 
 Conditional expectation
 ~~~~~~~~~~~~~~~~~~~~~~~
