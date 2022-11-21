@@ -1,3 +1,4 @@
+======
 Theory
 ======
 
@@ -9,8 +10,7 @@ Basics
 
 .. include:: bpf.rst
 
-Conditional expectation
-~~~~~~~~~~~~~~~~~~~~~~~
+.. include:: cond_exp.rst
 
 Brownian Motion
 ~~~~~~~~~~~~~~~

@@ -1,13 +1,13 @@
 from datetime import date
 
-needs_sphinx = "4.3"
+needs_sphinx = "5.3"
 # -- Project information -----------------------------------------------
 
 project = "nssvie"
 author = "Daniel Sagolla"
 copyright = f"{date.today().year}, " + author
-version = "0.0.1"
-release = "0.0.1"
+version = "0.0.2"
+release = "0.0.2"
 
 # -- General configuration ---------------------------------------------
 
@@ -17,10 +17,12 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.intersphinx",
     "sphinx_copybutton",
+    "sphinx_togglebutton",
     "sphinx.ext.graphviz",
     "sphinx.ext.viewcode",
     "sphinx.ext.mathjax",
     "sphinx_design",
+    # "nbsphinx"
 ]
 
 intersphinx_mapping = {
@@ -29,6 +31,9 @@ intersphinx_mapping = {
     "scipy": ("https://docs.scipy.org/doc/scipy/", None),
     "stochastic": ("https://stochastic.readthedocs.io/en/stable/", None)
 }
+
+togglebutton_hint = "Proof."
+togglebutton_hint_hide = "Proof."
 
 # Automatically generate autosummary after each build
 autosummary_generate = True
