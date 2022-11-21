@@ -119,7 +119,7 @@ class BlockPulseFunctions:
                 i * self.h)[0]
         )
 
-    def _coefficient_vector(self, f):
+    def _coeff_vector(self, f):
         """Calculates the block pulse coefficient vector.
 
         .. math::
