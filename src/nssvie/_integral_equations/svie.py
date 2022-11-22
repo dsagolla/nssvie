@@ -4,9 +4,12 @@ Classes
 -------
 SVIE
 """
-from numpy import eye
+from numpy import (
+    eye,
+    transpose
+)
 
-from numpy.linalg import solve
+from scipy.linalg import solve_triangular
 
 from nssvie._orthogonal_functions import BlockPulseFunctions
 
@@ -65,7 +68,9 @@ class SVIE:
             <https://www.sciencedirect.com/science/
             article/pii/S0895717711005504/>`_ is used which relies on an
             operational matrix of integration based on block pulse
-            functions.
+            functions. For the solution of :math:`MX=F`, where :math:`M`
+            is a triangular matrix
+            :func:`scipy.linalg.solve_triangular` is used.
 
         Returns
         -------
@@ -77,13 +82,14 @@ class SVIE:
             # Approximate with an operational matrix of integration
             # based on block pulse functions as suggested in
             # Maleknejad et. al (2012).
-            bpf = BlockPulseFunctions(m, self.T)
-            M = (
+            bpf = BlockPulseFunctions(T=self.T, m=m)
+            M = transpose(
                 eye(m)
-                - bpf.matrix_b1(self.kernel_1)
-                - bpf.matrix_b2(self.kernel_2)
+                - bpf._matrix_b1(kernel_1=self.kernel_1)
+                - bpf._matrix_b2(kernel_2=self.kernel_2)
             )
-            return solve(M.T, bpf._coefficient_vector(self.f))
+            F = bpf._coeff_vector(f=self.f)
+            return solve_triangular(M, F)
 
 
 # Maybe add other methods to solve the given stochastic Volterra
