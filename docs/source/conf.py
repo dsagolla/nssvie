@@ -1,13 +1,15 @@
 from datetime import date
 
+from nssvie._version import version
+
 needs_sphinx = "5.3"
 # -- Project information -----------------------------------------------
 
 project = "nssvie"
 author = "Daniel Sagolla"
 copyright = f"{date.today().year}, " + author
-version = "0.0.2"
-release = "0.0.2"
+version = version
+release = version
 
 # -- General configuration ---------------------------------------------
 
