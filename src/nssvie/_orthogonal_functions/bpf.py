@@ -4,7 +4,17 @@ Classes
 -------
 BlockPulseFunction
 """
-from numpy import array, eye, triu, ones, full, transpose, diagflat, multiply
+from numpy import (
+    array,
+    eye,
+    triu,
+    ones,
+    full,
+    transpose,
+    diagflat,
+    multiply,
+    arange
+)
 
 from scipy.integrate import quad, dblquad
 
@@ -170,7 +180,7 @@ class BlockPulseFunctions:
             j * self.h,
         )[0]
 
-    def _coefficient_matrix(self, k):
+    def _coeff_matrix(self, k):
         """Calculate the block pulse coefficient matrix.
 
         .. math::
@@ -263,24 +273,27 @@ class BlockPulseFunctions:
 
         # Generate a sample from the Brownian Motion
         bb_sample = bb.sample_at(
-            [0.5 * self.h * i for i in range(2 * self.m + 1)]
+            [i * self.h for i in arange(0, self.m + 0.5, 0.5)]
         )
 
         # Construct the upper triangular part
         const_column = [
-            bb_sample[2 * i] - bb_sample[2 * (i - 1)]
-            for i in range(1, self.m + 1)
+            bb_sample[i] - bb_sample[i-2]
+            for i in range(2, 2*self.m + 2, 2)
         ]
-        triu_matrix = full((self.m, self.m), transpose([const_column]))
+        triu_matrix = triu(
+            full((self.m, self.m), transpose([const_column])),
+            k=1
+        )
 
         # Construct the diagonal part
         diagonal = [
             (bb_sample[i] - bb_sample[i - 1])
-            for i in range(1, 2 * self.refineness + 1, 2)
+            for i in range(1, 2*self.m, 2)
         ]
         diag_matrix = diagflat(diagonal)
 
-        return diag_matrix + triu(triu_matrix, k=1)
+        return (diag_matrix + triu_matrix)
 
     def matrix_b1(self, kernel_1):
         """Generates the matrix :math:`B_1`from the article
@@ -299,7 +312,7 @@ class BlockPulseFunctions:
         """
         return multiply(
             self._operational_matrix_of_integration(),
-            self._coefficient_matrix(kernel_1),
+            self._coeff_matrix(kernel_1),
         )
 
     def matrix_b2(self, kernel_2):
@@ -319,5 +332,5 @@ class BlockPulseFunctions:
         """
         return multiply(
             self._stochastic_operational_matrix_of_integration(),
-            self._coefficient_matrix(kernel_2),
+            self._coeff_matrix(kernel_2),
         )
