@@ -33,5 +33,5 @@ def test_stoch_op_matrix():
     ])
     assert array_equal(
         P_S,
-        round(bpf._stochastic_operational_matrix_of_integration(), 11)
+        round(bpf.matrix_b1(lambda x, y: x*(y**2)), 11)
     )
