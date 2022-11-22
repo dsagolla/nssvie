@@ -89,7 +89,7 @@ class SVIE:
                 - bpf._matrix_b2(kernel_2=self.kernel_2)
             )
             F = bpf._coeff_vector(f=self.f)
-            return solve_triangular(M, F)
+            return solve_triangular(M, F, lower=True)
 
 
 # Maybe add other methods to solve the given stochastic Volterra
