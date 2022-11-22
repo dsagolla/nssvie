@@ -1,7 +1,7 @@
 nssvie 
 ******
 
-|build| |docs| |pypi| |pyversions| |licence|
+|tests| |build| |docs| |pypi| |pyversions| |licence|
 
 .. |stochastic-volterra-integral-equation| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main//docs/source/images/stochastic-volterra-integral-equation.svg
 .. |X-t| image:: https://raw.githubusercontent.com/dsagolla/nssvie/main//docs/source/images/X-t.svg
@@ -145,3 +145,5 @@ Citation
     :target: https://nssvie.readthedocs.io/en/latest/?badge=latest
 .. |build| image:: https://img.shields.io/github/workflow/status/dsagolla/nssvie/Upload%20Python%20Package
 	:target: https://github.com/dsagolla/nssvie/actions/workflows/python-publish.yml
+.. |tests| image:: https://img.shields.io/github/workflow/status/dsagolla/nssvie/tests?label=tests
+	:target: https://github.com/dsagolla/nssvie/actions/workflows/run-tests.yml 

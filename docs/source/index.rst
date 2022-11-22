@@ -10,7 +10,7 @@ nssvie
    Theory <theory/index>
    API Reference <reference/api>
 
-|build| |docs| |pypi| |pyversions| |licence|
+|tests| |build| |docs| |pypi| |pyversions| |licence|
 
 A python package for computing a numerical solution of stochastic Volterra 
 integral equations.
@@ -173,3 +173,5 @@ Citation
 		:target: https://nssvie.readthedocs.io/en/latest/?badge=latest
 .. |build| image:: https://img.shields.io/github/workflow/status/dsagolla/nssvie/Upload%20Python%20Package
 		:target: https://github.com/dsagolla/nssvie/actions/workflows/python-publish.yml
+.. |tests| image:: https://img.shields.io/github/workflow/status/dsagolla/nssvie/tests?label=tests
+	:target: https://github.com/dsagolla/nssvie/actions/workflows/run-tests.yml 
