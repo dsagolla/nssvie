@@ -202,7 +202,7 @@ class BlockPulseFunctions:
         def k_var_switched(second_var, first_var):
             return k(first_var, second_var)
 
-        coeff_matrix = array(
+        K = array(
             [
                 [
                     self._coeff_ij(i, j, k_var_switched)
@@ -211,7 +211,7 @@ class BlockPulseFunctions:
                 for i in range(1, self.m + 1)
             ]
         )
-        return self.h ** (-2) * coeff_matrix
+        return self.h ** (-2) * K
 
     def _operational_matrix_of_integration(self):
         """Calculates the operational matrix of integration.
@@ -295,7 +295,7 @@ class BlockPulseFunctions:
 
         return (diag_matrix + triu_matrix)
 
-    def matrix_b1(self, kernel_1):
+    def _matrix_b1(self, kernel_1):
         """Generates the matrix :math:`B_1`from the article
         `Maleknejad et. al (2012)
         <https://www.sciencedirect.com/science/article/pii/
@@ -315,7 +315,7 @@ class BlockPulseFunctions:
             self._coeff_matrix(kernel_1),
         )
 
-    def matrix_b2(self, kernel_2):
+    def _matrix_b2(self, kernel_2):
         """Generates the matrix :math:`B_2`from the article
         `Maleknejad et. al (2012)
         <https://www.sciencedirect.com/science/article/pii/
