@@ -90,28 +90,28 @@ so
 + |example-1-k-1| and   
 + |example-1-k-2|.
 
-	.. code-block:: python
+.. code-block:: python
+
+	>>> from nssvie import StochasticVolterraIntegralEquations
+			
+	>>> # Define the function and the kernels of the stochastic Volterra 
+	>>> # integral equation
+	>>> def f(t):
+	>>> 	return 1.0
 	
-		>>> from nssvie import StochasticVolterraIntegralEquations
-				
-		>>> # Define the function and the kernels of the stochastic Volterra 
-		>>> # integral equation
-		>>> def f(t):
-		>>> 	return 1.0
-		
-		>>> def k1(s,t):
-		>>> 	return s**2
-		
-		>>> def k2(s,t):
-		>>> 	return s
-		
-		>>> # Generate the stochastic Volterra integral equation
-		>>> svie = StochasticVolterraIntegralEquations(
-		>>> 	f=f, kernel_2=k1, kernel_1=k2, T=0.5
-		>>> )
-		
-		>>> # Calculate numerical solution with m=20 intervals  
-		>>> svie_solution = svie.solve_method(m=20, solve_method="bpf")
+	>>> def k1(s,t):
+	>>> 	return s**2
+	
+	>>> def k2(s,t):
+	>>> 	return s
+	
+	>>> # Generate the stochastic Volterra integral equation
+	>>> svie = StochasticVolterraIntegralEquations(
+	>>> 	f=f, kernel_2=k1, kernel_1=k2, T=0.5
+	>>> )
+	
+	>>> # Calculate numerical solution with m=20 intervals  
+	>>> svie_solution = svie.solve_method(m=20, solve_method="bpf")
 
 
 The parameters are
