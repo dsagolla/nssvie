@@ -117,7 +117,7 @@ so
 The parameters are
 
 + ``f``: the function |f|.
-+ ``kernel_1``, ``kernel_2``: the kernels :math:|k-1-k-2|.
++ ``kernel_1``, ``kernel_2``: the kernels |k-1-k-2|.
 + ``T``: the right hand side of :math:`[0,T)`. Default is ``1.0``.
 + ``m``: the number of intervals to divide :math:`[0,T)`. Default is ``50``.
 + ``solve_method``: the choosen method based on orthogonal functions. Default is ``bpf``. 
