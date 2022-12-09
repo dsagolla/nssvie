@@ -12,11 +12,12 @@ from numpy import (
 from scipy.linalg import solve_triangular
 
 from nssvie._orthogonal_functions import BlockPulseFunctions
+from nssvie._integral_equations.base import IntegralEquation
 
 
-class SVIE:
+class SVIE(IntegralEquation):
     """
-    Generate a stochastic Volterra integral equation
+    Stochastic Volterra integral equation
 
     .. math::
         :label: svie_doc
@@ -47,11 +48,12 @@ class SVIE:
     -------
     solve_numerical
     """
+
     def __init__(self, f, kernel_1, kernel_2, T=1.0):
         self.f = f
         self.kernel_1 = kernel_1
         self.kernel_2 = kernel_2
-        self.T = float(T)
+        super().__init__(T=T)
 
     def solve_numerical(self, m=20, solve_method='bpf'):
         """
