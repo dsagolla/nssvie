@@ -20,8 +20,10 @@ from scipy.integrate import quad, dblquad
 
 from stochastic.processes import BrownianMotion
 
+from nssvie._orthogonal_functions.base import OrthogonalFunctions
 
-class BlockPulseFunctions:
+
+class BlockPulseFunctions(OrthogonalFunctions):
     """
     Generate a :math:`m`-set of block pulse functions.
 
@@ -39,8 +41,7 @@ class BlockPulseFunctions:
     """
 
     def __init__(self, T=1.0, m=20):
-        self.m = m
-        self.T = float(T)
+        super().__init__(T=T, m=m)
         self.h = float(T / m)
 
     def __str__(self):
