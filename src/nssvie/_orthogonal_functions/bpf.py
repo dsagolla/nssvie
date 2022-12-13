@@ -2,7 +2,7 @@
 
 Classes
 -------
-BlockPulseFunction
+BlockPulseFunctions
 """
 from numpy import (
     array,
