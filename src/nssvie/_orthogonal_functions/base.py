@@ -1,6 +1,5 @@
-"""Orthogonal function base class.
+"""Orthogonal functions base class.
 """
-
 from abc import ABC
 
 
