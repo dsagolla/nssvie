@@ -9,7 +9,7 @@ paper. For a detailed theoretical background we refer to this paper.
 """
 from nssvie._integral_equations import SVIE
 
-__all__ = ["SVIE"]                                          # noqa: F401
+__all__ = ['SVIE']                                          # noqa: F401
 
 from nssvie._version import version
 
