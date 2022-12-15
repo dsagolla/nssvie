@@ -202,3 +202,5 @@ cython_debug/
 
 # Draw
 .odg
+
+console.ipynb
