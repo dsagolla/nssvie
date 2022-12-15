@@ -107,4 +107,4 @@ html_css_files = [
 
 html_title = f"{project} Manual"
 html_last_updated_fmt = "%b %d, %Y"
-html_context = {"default_mode": "light"}
+html_context = {"default_mode": "dark"}
