@@ -143,7 +143,7 @@ Citation
     :alt: doi: 10.1016/j.mcm.2011.08.053
 .. |docs| image:: https://readthedocs.org/projects/nssvie/badge/?version=latest
     :target: https://nssvie.readthedocs.io/en/latest/?badge=latest
-.. |build| image:: https://img.shields.io/github/workflow/status/dsagolla/nssvie/build-publish?label=build
+.. |build| image:: https://github.com/dsagolla/nssvie/actions/workflows/build-publish.yml/badge.svg
 	:target: https://github.com/dsagolla/nssvie/actions/workflows/python-publish.yml
-.. |tests| image:: https://img.shields.io/github/workflow/status/dsagolla/nssvie/tests?label=tests
+.. |tests| image:: https://github.com/dsagolla/nssvie/actions/workflows/run-tests.yml/badge.svg
 	:target: https://github.com/dsagolla/nssvie/actions/workflows/run-tests.yml 
