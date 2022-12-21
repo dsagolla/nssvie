@@ -23,7 +23,7 @@ setuptools.setup(
     name="nssvie",
     version="0.0.4",
     author="Daniel Sagolla",
-    author_email="daniel.sagolla@udo.edu",
+    author_email="dsagolla@mailbox.org",
     description=r"Numerical solution of stochastic Volterra integral " +
                 r"equations via a stochastic operational matrix based " +
                 r"on block pulse functions.",
