@@ -4,23 +4,16 @@ Classes
 -------
 BlockPulseFunctions
 """
-from numpy import (
-    array,
-    eye,
-    triu,
-    ones,
-    full,
-    transpose,
-    diagflat,
-    multiply,
-    arange
-)
+import numpy as np
 
-from scipy.integrate import quad, dblquad
+from scipy.integrate import quad
+from scipy.integrate import dblquad
 
 from stochastic.processes import BrownianMotion
 
 from nssvie._orthogonal_functions.base import OrthogonalFunctions
+
+from typing import Callable
 
 
 class BlockPulseFunctions(OrthogonalFunctions):
@@ -40,21 +33,21 @@ class BlockPulseFunctions(OrthogonalFunctions):
         The width of one of the :math:`m` intervals.
     """
 
-    def __init__(self, T=1.0, m=20):
+    def __init__(self, T: float = 1.0, m: int = 20) -> None:
         super().__init__(T=T, m=m)
         self.h = float(T / m)
 
-    def __str__(self):
+    def __str__(self) -> str:
         str_name = (
             f"{self.m}-Set of block pulse functions on [0, {self.T})"
         )
         return str_name
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         repr_string = f"BlockPulseFunctions(m={self.m}, [0, {self.T}))"
         return repr_string
 
-    def _bpf_i(self, i, t):
+    def _bpf_i(self, i: int, t: float) -> float:
         """Calculates the value of a block pulse function at :math:`t`.
 
         .. math::
@@ -97,9 +90,9 @@ class BlockPulseFunctions(OrthogonalFunctions):
         :class:`numpy.ndarray`
             :math:`\\phi(t)`
         """
-        return array([self._bpf_i(i, t) for i in range(1, self.m + 1)])
+        return np.array([self._bpf_i(i, t) for i in range(1, self.m + 1)])
 
-    def _coeff_i(self, i, f):
+    def _coeff_i(self, i: int, f: Callable[[float], float]) -> float:
         """Calculates the block pulse coefficient.
 
         .. math::
@@ -130,7 +123,7 @@ class BlockPulseFunctions(OrthogonalFunctions):
                 i * self.h)[0]
         )
 
-    def _coeff_vector(self, f):
+    def _coeff_vector(self, f: Callable[[float], float]):
         """Calculates the block pulse coefficient vector.
 
         .. math::
@@ -148,9 +141,18 @@ class BlockPulseFunctions(OrthogonalFunctions):
             The block pulse function coefficient vector :math:`F` for
             the function :math:`f`.
         """
-        return array([self._coeff_i(i, f) for i in range(1, self.m + 1)]).T
+        return np.array(
+            [
+                self._coeff_i(i, f) for i in range(1, self.m + 1)
+            ]
+        ).T
 
-    def _coeff_ij(self, i, j, f):
+    def _coeff_ij(
+            self,
+            i: int,
+            j: int,
+            f: Callable[[float, float], float]
+    ) -> float:
         """Calculate the block pulse coefficient.
 
         .. math::
@@ -181,7 +183,7 @@ class BlockPulseFunctions(OrthogonalFunctions):
             j * self.h,
         )[0]
 
-    def _coeff_matrix(self, k):
+    def _coeff_matrix(self, k: Callable[[float, float], float]) -> np.array:
         """Calculate the block pulse coefficient matrix.
 
         .. math::
@@ -190,7 +192,7 @@ class BlockPulseFunctions(OrthogonalFunctions):
 
         Parameters
         ----------
-        k:  callable
+        k:  Callable[[float, float], float]
             The function :math:`k`.
 
         Returns
@@ -203,7 +205,7 @@ class BlockPulseFunctions(OrthogonalFunctions):
         def k_var_switched(second_var, first_var):
             return k(first_var, second_var)
 
-        K = array(
+        K = np.array(
             [
                 [
                     self._coeff_ij(i, j, k_var_switched)
@@ -214,7 +216,7 @@ class BlockPulseFunctions(OrthogonalFunctions):
         )
         return self.h ** (-2) * K
 
-    def _operational_matrix_of_integration(self):
+    def _operational_matrix_of_integration(self) -> np.array:
         """Calculates the operational matrix of integration.
 
         .. math::
@@ -236,14 +238,14 @@ class BlockPulseFunctions(OrthogonalFunctions):
         S0895717711005504/>`_
         """
         # Construct the diagonal part
-        diagonal = eye(self.m)
+        diagonal = np.eye(self.m)
 
         # Contruct the upper triangular part
-        upper_triu = triu(2 * ones((self.m, self.m)), k=1)
+        upper_triu = np.triu(2 * np.ones((self.m, self.m)), k=1)
 
         return self.h * 0.5 * (diagonal + upper_triu)
 
-    def _stochastic_operational_matrix_of_integration(self):
+    def _stochastic_operational_matrix_of_integration(self) -> np.array:
         """Calculates the stochastic operational matrix of integration.
 
         .. math::
@@ -274,7 +276,7 @@ class BlockPulseFunctions(OrthogonalFunctions):
 
         # Generate a sample from the Brownian Motion
         bb_sample = bb.sample_at(
-            [i * self.h for i in arange(0, self.m + 0.5, 0.5)]
+            [i * self.h for i in np.arange(0, self.m + 0.5, 0.5)]
         )
 
         # Construct the upper triangular part
@@ -282,8 +284,8 @@ class BlockPulseFunctions(OrthogonalFunctions):
             bb_sample[i] - bb_sample[i-2]
             for i in range(2, 2*self.m + 2, 2)
         ]
-        triu_matrix = triu(
-            full((self.m, self.m), transpose([const_column])),
+        triu_matrix = np.triu(
+            np.full((self.m, self.m), np.transpose([const_column])),
             k=1
         )
 
@@ -292,11 +294,14 @@ class BlockPulseFunctions(OrthogonalFunctions):
             (bb_sample[i] - bb_sample[i - 1])
             for i in range(1, 2*self.m, 2)
         ]
-        diag_matrix = diagflat(diagonal)
+        diag_matrix = np.diagflat(diagonal)
 
         return (diag_matrix + triu_matrix)
 
-    def _matrix_b1(self, kernel_1):
+    def _matrix_b1(
+        self,
+        kernel_1: Callable[[float, float], float]
+    ) -> np.array:
         """Generates the matrix :math:`B_1`from the article
         `Maleknejad et. al (2012)
         <https://www.sciencedirect.com/science/article/pii/
@@ -304,19 +309,22 @@ class BlockPulseFunctions(OrthogonalFunctions):
 
         Parameters
         ----------
-        kernel_1: callable
+        kernel_1: Callable[[float, float], float]
 
         Returns
         -------
         :class:`numpy.ndarray`
             Matrix ``B_1``.
         """
-        return multiply(
+        return np.multiply(
             self._operational_matrix_of_integration(),
             self._coeff_matrix(kernel_1),
         )
 
-    def _matrix_b2(self, kernel_2):
+    def _matrix_b2(
+        self,
+        kernel_2: Callable[[float, float], float]
+    ) -> np.array:
         """Generates the matrix :math:`B_2`from the article
         `Maleknejad et. al (2012)
         <https://www.sciencedirect.com/science/article/pii/
@@ -324,14 +332,14 @@ class BlockPulseFunctions(OrthogonalFunctions):
 
         Parameter
         ---------
-        kernel_2: callable
+        kernel_2: Callable[[float, float], float]
 
         Returns
         -------
         :class:`numpy.ndarray`
             Matrix ``B_2``.
         """
-        return multiply(
+        return np.multiply(
             self._stochastic_operational_matrix_of_integration(),
             self._coeff_matrix(kernel_2),
         )

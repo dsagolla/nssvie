@@ -66,6 +66,16 @@ class SVIE(IntegralEquation):
         self.kernel_2 = kernel_2
         super().__init__(T=T)
 
+    def __str__(self) -> None:
+        return (
+            f'Stochastic Volterra integral equation on interval [0, {self.T})'
+        )
+
+    def __repr__(self) -> None:
+        return (
+            f'SVIE(f, k1, k2, interval = [0, {self.T}))'
+        )
+
     def solve_numerical(
         self,
         m: int,
