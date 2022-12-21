@@ -13,7 +13,7 @@ to solve a linear lower triangular system.
 Basics
 ------
 
-First we we briefly introduce some basic properties about block pulse functions
+First we briefly introduce some basic properties about block pulse functions
 and function / integral approximation with them. Then we focus on repeating some
 results about random variables, conditional expectation, martingales and give a
 short reminder about the construction of the itô-integral. For details we refer
@@ -22,51 +22,81 @@ to [2]_.
 Block pulse functions
 ~~~~~~~~~~~~~~~~~~~~~
 
-Define an :math:`m`-set of block pulse functions (BPFs) as
+We consider an interval :math:`[0, T)` and divide it in :math:`m` intervals with
+a width of :math:`h = \frac{T}{m}`. An :math:`m`-set of block pulse functions
+is then defined as the indicator functions of the intervals
+:math:`[(i-1)h, ih]`:
+
+.. rubric:: Definition
+
+A family :math:`\Phi = ( \phi_i )_{ i=1 , \ldots , m}` of functions
+:math:`\phi_i \colon [0, T) \to \{0, 1\}` with
 
 .. math::
 
     \phi_i(t) = \begin{cases} 1 & , \ (i-1)h \leq t < ih \\ 0 &
     \text{otherwise} \end{cases} \qquad (i=1,\ldots,m)
 
-for :math:`t \in [0,T)` and an interval width of :math:`h=\frac{T}{m}`.
+is called an :math:`m`-**set of block pulse functions**.
+
+-----
 
 .. image:: ../images/bpfs.png
 
 The BPF's are
 
-- disjoint
-    i.e. 
++ **disjoint** i.e. 
 
-    .. math::
+  .. math::
 
-        \phi_i(t)\phi_j(t) = \delta_{ij} \phi_i(t),
+    \phi_i(t)\phi_j(t) = \delta_{ij} \phi_i(t),
 
-    for :math:`i,j = 1, \ldots, m` and :math:`\delta_{ij}` the Kronecker delta
+  for :math:`i,j = 1, \ldots, m` and :math:`\delta_{ij}` the Kronecker delta
 
-- orthogonal
-    i.e.
++ **orthogonal**, i.e.
 
-    .. math::
+  .. math::
 
-        \int\limits_0^T \phi_i(t) \phi_j(t) dt = h \delta_{ij},
+    \int\limits_0^T \phi_i(t) \phi_j(t) dt = h \delta_{ij},
 
-    for for :math:`i,j=1,\ldots,m`
+  for for :math:`i,j=1,\ldots,m`
 
-- complete
-    i.e.
++ **complete**, i.e. 
 
-    .. math::
+  .. math::
 
-        \frac{1}{T} \int\limits_0^T \left[ f(s) - \sum\limits_{k=0}^m f_j \phi_i(s) \right]^2 ds
+    \frac{1}{T} \int\limits_0^T \left[ f(s) - \sum\limits_{k=0}^m f_j \phi_i(s) \right]^2 ds
 
-    decreases monotonically to zero as :math:`m` tends to infinity, where
+  decreases monotonically to zero as :math:`m` tends to infinity, where
 
-    .. math::
+  .. math::
 
-        f_i = \frac{1}{h} \int\limits_0^T f(s) \phi_i(s) ds
+    f_i = \frac{1}{h} \int\limits_0^T f(s) \phi_i(s) ds
 
-    are the so called **block pulse coefficients**.
+  are the so called **block pulse coefficients**.
+
+.. rubric:: Function approximation
+
+Let :math:`f \colon [0,T) \to \mathbb{R}` be a real-valued and square integrable
+function. Then :math:`f` can be approximated by
+
+.. math::
+
+    f(t) \simeq \hat{f}_m (t) = \sum\limits_{i=0}^m f_i \phi_i (t),
+
+where :math:`f_i` is the :math:`i`-th block pulse coefficients. 
+
+.. math::
+
+    f(t) \simeq \hat{f}_m (t) = F^T \Phi (t) = \Phi^T (t) F
+
+with :math:`F = \left( f_1 , \ldots, f_m \right)` the block pulse coefficients
+vector and :math:`\Phi (t) = \left( \phi_1 (t) , \ldots, \phi_m (t) \right)` the
+block pulse function vector.
+
+.. rubric:: Integral approximation
+
+more to come ...
 
 Conditional expectation 
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -115,6 +145,8 @@ Itô-Integral
 
 Stochastic integration operational matrix
 -----------------------------------------
+
+
 
 Numerical solution of stochastic Volterra integral equations
 -------------------------------------------------------------
