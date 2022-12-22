@@ -1,7 +1,7 @@
 """Stochastic Volterra integral equation.
 
-Classes
--------
+Class
+-----
 SVIE
 """
 import numpy as np
