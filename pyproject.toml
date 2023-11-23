@@ -1,9 +1,28 @@
 [tool.poetry]
 name = "nssvie"
 version = "0.1.0"
-description = ""
-authors = ["dsagolla <dsagolla@mailbox.org>"]
+description = "A python package for computing a numerical solution of stochastic
+Volterra integral equations of the second kind based on block pulse functions"
+licence = "GPL-3.0-only"
+authors = ["Daniel Sagolla <dsagolla@mailbox.org>"]
 readme = "README.rst"
+repository = "https://github.com/dsagolla/nssvie"
+documentation = "https://nssvie.readthedocs.io"
+keywords = ["mathematics, stochastic, numerical solution, sde]
+classifiers = [
+        "Operating System :: OS Independent",
+        "Natural Language :: English",
+        "Intended Audience :: Science/Research",
+        "Intended Audience :: Developers",
+        "Topic :: Software Development",
+        "Topic :: Scientific/Engineering",
+        "Topic :: Scientific/Engineering :: Mathematics",
+        "Topic :: Software Development :: Libraries :: Python Modules"]
+
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/dsagolla/nssvie/issues"
+
 
 [tool.poetry.dependencies]
 python = "^3.10"
